@@ -8,7 +8,7 @@ export default class Home extends React.Component {
   }
 
   handleSuccessfulAuth(data) {
-    //this.props.handleLogin(data);
+    this.props.handleLogin(data);
     this.props.history.push('/dashboard');
   }
   render() {

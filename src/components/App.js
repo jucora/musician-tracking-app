@@ -12,6 +12,7 @@ class App extends React.Component {
     };
 
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
   handleLogout() {
     this.setState({
@@ -19,12 +20,29 @@ class App extends React.Component {
       user: {},
     });
   }
+
+  handleLogin(data) {
+    this.setState({
+      loggedInStatus: 'LOGGED_IN',
+      user: data.user,
+    });
+  }
   render() {
     return (
       <div className="App">
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <Home
+                  {...props}
+                  handleLogin={this.handleLogin}
+                  loggedInStatus={this.state.loggedInStatus}
+                />
+              )}
+            />
             <Route
               exact
               path="/dashboard"
