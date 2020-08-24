@@ -23,17 +23,17 @@ export default class Registration extends React.Component {
         'http://localhost:3001/registrations',
         {
           user: {
-            email: email,
-            password: password,
-            password_confirmation: password_confirmation,
+            email,
+            password,
+            password_confirmation,
           },
         },
-        { withCredentials: true }
+        { withCredentials: true },
       )
-      .then((response) => {
+      .then(response => {
         this.props.handleSuccessfulAuth(response.data);
       })
-      .catch((error) => {
+      .catch(error => {
         console.log('Registration error', error);
       });
   }
@@ -41,6 +41,7 @@ export default class Registration extends React.Component {
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
+
   render() {
     return (
       <div>

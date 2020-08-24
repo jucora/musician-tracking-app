@@ -1,7 +1,7 @@
 import React from 'react';
+import axios from 'axios';
 import Registration from './auth/Registration';
 import Login from './auth/Login';
-import axios from 'axios';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -17,18 +17,22 @@ export default class Home extends React.Component {
   handleLogoutClick() {
     axios
       .delete('http://localhost:3001/logout', { withCredentials: true })
-      .then((response) => {
+      .then(response => {
         this.props.handleLogout();
       })
-      .catch((error) => {
+      .catch(error => {
         console.log('Logout error', error);
       });
   }
+
   render() {
     return (
       <div>
         <h1>Home Page</h1>
-        <h2>Status: {this.props.loggedInStatus}</h2>
+        <h2>
+          Status:
+          {this.props.loggedInStatus}
+        </h2>
         {this.props.loggedInStatus === 'NOT_LOGGED_IN' ? (
           [
             <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />,

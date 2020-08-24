@@ -22,18 +22,18 @@ export default class Login extends React.Component {
         'http://localhost:3001/sessions',
         {
           user: {
-            email: email,
-            password: password,
+            email,
+            password,
           },
         },
-        { withCredentials: true }
+        { withCredentials: true },
       )
-      .then((response) => {
+      .then(response => {
         if (response.data.logged_in) {
           this.props.handleSuccessfulAuth(response.data);
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.log('Login error', error);
       });
   }
@@ -41,6 +41,7 @@ export default class Login extends React.Component {
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
+
   render() {
     return (
       <div>
