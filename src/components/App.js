@@ -70,6 +70,7 @@ class App extends React.Component {
                   {...props}
                   handleLogin={this.handleLogin}
                   loggedInStatus={this.state.loggedInStatus}
+                  handleLogout={this.handleLogout}
                 />
               )}
             />
