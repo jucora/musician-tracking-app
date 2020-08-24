@@ -4,9 +4,9 @@ import './style/index.scss';
 import App from './components/App';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import musicianTrackingReducer from './reducers/index';
+import rootReducer from './reducers/index';
 
-const store = createStore;
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>
