@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import musicianReducer from './musicianReducer';
 
 const rootReducer = combineReducers({
-  musicianReducer: musicianReducer,
+  musicianReducer,
 });
 
 export default rootReducer;

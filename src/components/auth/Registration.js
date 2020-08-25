@@ -1,5 +1,7 @@
+/* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 import React from 'react';
 import axios from 'axios';
+import PropType from 'prop-types';
 
 export default class Registration extends React.Component {
   constructor(props) {
@@ -7,8 +9,8 @@ export default class Registration extends React.Component {
     this.state = {
       email: '',
       password: '',
-      password_confirmation: '',
-      registrationErrors: '',
+      passwordConfirmation: '',
+      // registrationErrors: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -16,7 +18,7 @@ export default class Registration extends React.Component {
 
   handleSubmit(e) {
     const { handleSuccessfulAuth } = this.props;
-    const { email, password, password_confirmation } = this.state;
+    const { email, password, passwordConfirmation } = this.state;
 
     e.preventDefault();
     axios
@@ -26,16 +28,16 @@ export default class Registration extends React.Component {
           user: {
             email,
             password,
-            password_confirmation,
+            passwordConfirmation,
           },
         },
-        { withCredentials: true }
+        { withCredentials: true },
       )
-      .then((response) => {
+      .then(response => {
         handleSuccessfulAuth(response.data);
       })
-      .catch((error) => {
-        console.log('Registration error', error);
+      .catch(error => {
+        console.error('Registration error', error);
       });
   }
 
@@ -44,7 +46,7 @@ export default class Registration extends React.Component {
   }
 
   render() {
-    const { email, password, password_confirmation } = this.state;
+    const { email, password, passwordConfirmation } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -70,7 +72,7 @@ export default class Registration extends React.Component {
             type="password"
             name="password_confirmation"
             placeholder="Password confirmation"
-            value={password_confirmation}
+            value={passwordConfirmation}
             onChange={this.handleChange}
             required
           />
@@ -81,3 +83,7 @@ export default class Registration extends React.Component {
     );
   }
 }
+
+Registration.propTypes = {
+  handleSuccessfulAuth: PropType.func.isRequired,
+};

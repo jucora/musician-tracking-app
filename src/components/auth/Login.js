@@ -1,5 +1,8 @@
+/* eslint no-console: ["error", { allow: ["warn", "error"] }] */
+
 import React from 'react';
 import axios from 'axios';
+import PropType from 'prop-types';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -7,7 +10,7 @@ export default class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
-      loginErrors: '',
+      // loginErrors: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -27,15 +30,15 @@ export default class Login extends React.Component {
             password,
           },
         },
-        { withCredentials: true }
+        { withCredentials: true },
       )
-      .then((response) => {
+      .then(response => {
         if (response.data.logged_in) {
           handleSuccessfulAuth(response.data);
         }
       })
-      .catch((error) => {
-        console.log('Login error', error);
+      .catch(error => {
+        console.error('Login error', error);
       });
   }
 
@@ -72,3 +75,7 @@ export default class Login extends React.Component {
     );
   }
 }
+
+Login.propTypes = {
+  handleSuccessfulAuth: PropType.func.isRequired,
+};

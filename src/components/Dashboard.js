@@ -1,16 +1,20 @@
+/* eslint no-console: ["error", { allow: ["warn", "error"] }] */
+
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const Dashboard = props => {
+  const { loggedInStatus, history, handleLogout } = props;
   const handleLogoutClick = () => {
     axios
       .delete('http://localhost:3001/logout', { withCredentials: true })
-      .then(response => {
-        props.handleLogout();
-        props.history.push('/');
+      .then(() => {
+        handleLogout();
+        window.location.reload();
       })
       .catch(error => {
-        console.log('Logout error', error);
+        console.error('Logout error', error);
       });
   };
 
@@ -19,15 +23,23 @@ const Dashboard = props => {
       <h1>Dashboard Page</h1>
       <h2>
         Status:
-        {props.loggedInStatus}
+        {loggedInStatus}
       </h2>
-      {props.loggedInStatus === 'LOGGED_IN' ? (
-        <button onClick={() => handleLogoutClick()}>Logout</button>
+      {loggedInStatus === 'LOGGED_IN' ? (
+        <button type="button" onClick={() => handleLogoutClick()}>
+          Logout
+        </button>
       ) : (
-        props.history.push('/')
+        history.push('/')
       )}
     </div>
   );
+};
+
+Dashboard.propTypes = {
+  handleLogout: PropTypes.func.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+  loggedInStatus: PropTypes.string.isRequired,
 };
 
 export default Dashboard;

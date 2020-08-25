@@ -10,7 +10,7 @@ const musicianReducer = (state = initialState, action) => {
     case SET_CURRENT_USER:
       return {
         ...state,
-        user: {},
+        user: action.payload,
       };
     case CHANGE_LOGGED_IN_STATUS:
       return {
