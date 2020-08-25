@@ -8,6 +8,7 @@ const initialState = {
 const musicianReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CURRENT_USER:
+      console.log('payl', action.payload);
       return {
         ...state,
         user: action.payload,

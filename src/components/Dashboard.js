@@ -4,8 +4,8 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-const Dashboard = props => {
-  const { loggedInStatus, history, handleLogout } = props;
+const Dashboard = (props) => {
+  const { loggedInStatus, history, handleLogout, user } = props;
   const handleLogoutClick = () => {
     axios
       .delete('http://localhost:3001/logout', { withCredentials: true })
@@ -13,7 +13,7 @@ const Dashboard = props => {
         handleLogout();
         window.location.reload();
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Logout error', error);
       });
   };
@@ -21,10 +21,7 @@ const Dashboard = props => {
   return (
     <div>
       <h1>Dashboard Page</h1>
-      <h2>
-        Status:
-        {loggedInStatus}
-      </h2>
+      <h2>Welcome {user.email}</h2>
       {loggedInStatus === 'LOGGED_IN' ? (
         <button type="button" onClick={() => handleLogoutClick()}>
           Logout

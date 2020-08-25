@@ -9,6 +9,7 @@ import Proptypes from 'prop-types';
 import Home from './Home';
 import Dashboard from './Dashboard';
 import { changeLoggedInStatus, setCurrentUser } from '../actions/index';
+import NavBar from './NavBar';
 
 class App extends React.Component {
   constructor() {
@@ -26,7 +27,7 @@ class App extends React.Component {
     const { changeLoggedInStatus, setCurrentUser, loggedInStatus } = this.props;
     axios
       .get('http://localhost:3001/logged_in', { withCredentials: true })
-      .then(response => {
+      .then((response) => {
         if (response.data.logged_in && loggedInStatus === 'NOT_LOGGED_IN') {
           changeLoggedInStatus('LOGGED_IN');
           setCurrentUser(response.data.current_user);
@@ -36,7 +37,7 @@ class App extends React.Component {
         }
         this.setState({ contentLoaded: true });
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('check login error', error);
       });
   }
@@ -44,7 +45,7 @@ class App extends React.Component {
   handleLogin(data) {
     const { changeLoggedInStatus, setCurrentUser } = this.props;
     changeLoggedInStatus('LOGGED_IN');
-    setCurrentUser(data.current_user);
+    setCurrentUser(data.user);
   }
 
   handleLogout() {
@@ -54,7 +55,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { loggedInStatus } = this.props;
+    const { loggedInStatus, user } = this.props;
+    console.warn('current', user);
     const { contentLoaded } = this.state;
     return contentLoaded ? (
       <div className="App">
@@ -63,7 +65,7 @@ class App extends React.Component {
             <Route
               exact
               path="/"
-              render={props => (
+              render={(props) => (
                 <Home
                   {...props}
                   handleLogin={this.handleLogin}
@@ -75,15 +77,17 @@ class App extends React.Component {
             <Route
               exact
               path="/dashboard"
-              render={props => (
+              render={(props) => (
                 <Dashboard
                   {...props}
                   handleLogout={() => this.handleLogout}
                   loggedInStatus={loggedInStatus}
+                  user={user}
                 />
               )}
             />
           </Switch>
+          {loggedInStatus === 'LOGGED_IN' ? <NavBar /> : null}
         </BrowserRouter>
       </div>
     ) : null;
@@ -96,17 +100,17 @@ App.propTypes = {
   loggedInStatus: Proptypes.string.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   loggedInStatus: state.musicianReducer.loggedInStatus,
   user: state.musicianReducer.user,
 });
 
-const matchDispatchToProps = dispatch => ({
-  changeLoggedInStatus: newStatus => {
+const matchDispatchToProps = (dispatch) => ({
+  changeLoggedInStatus: (newStatus) => {
     dispatch(changeLoggedInStatus(newStatus));
   },
-  setCurrentUser: () => {
-    dispatch(setCurrentUser());
+  setCurrentUser: (user) => {
+    dispatch(setCurrentUser(user));
   },
 });
 
