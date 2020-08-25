@@ -5,6 +5,7 @@ import App from './components/App';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducer from './reducers/index';
+import { string } from 'prop-types';
 
 const store = createStore(rootReducer);
 
@@ -16,3 +17,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+export default store;

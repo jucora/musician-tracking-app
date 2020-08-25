@@ -15,6 +15,7 @@ export default class Registration extends React.Component {
   }
 
   handleSubmit(e) {
+    const { handleSuccessfulAuth } = this.props;
     const { email, password, password_confirmation } = this.state;
 
     e.preventDefault();
@@ -28,12 +29,12 @@ export default class Registration extends React.Component {
             password_confirmation,
           },
         },
-        { withCredentials: true },
+        { withCredentials: true }
       )
-      .then(response => {
-        this.props.handleSuccessfulAuth(response.data);
+      .then((response) => {
+        handleSuccessfulAuth(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log('Registration error', error);
       });
   }
@@ -43,6 +44,7 @@ export default class Registration extends React.Component {
   }
 
   render() {
+    const { email, password, password_confirmation } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -50,7 +52,7 @@ export default class Registration extends React.Component {
             type="email"
             name="email"
             placeholder="Your Email"
-            value={this.state.email}
+            value={email}
             onChange={this.handleChange}
             required
           />
@@ -59,7 +61,7 @@ export default class Registration extends React.Component {
             type="password"
             name="password"
             placeholder="Password"
-            value={this.state.password}
+            value={password}
             onChange={this.handleChange}
             required
           />
@@ -68,7 +70,7 @@ export default class Registration extends React.Component {
             type="password"
             name="password_confirmation"
             placeholder="Password confirmation"
-            value={this.state.password_confirmation}
+            value={password_confirmation}
             onChange={this.handleChange}
             required
           />

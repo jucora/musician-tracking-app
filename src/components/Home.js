@@ -10,33 +10,39 @@ export default class Home extends React.Component {
   }
 
   handleSuccessfulAuth(data) {
-    this.props.handleLogin(data);
-    this.props.history.push('/dashboard');
+    console.log('data es', data);
+    const { handleLogin, history } = this.props;
+    handleLogin(data);
+    history.push('/dashboard');
   }
 
   handleLogoutClick() {
     axios
       .delete('http://localhost:3001/logout', { withCredentials: true })
-      .then(response => {
+      .then((response) => {
         this.props.handleLogout();
       })
-      .catch(error => {
+      .catch((error) => {
         console.log('Logout error', error);
       });
   }
 
   render() {
+    const { loggedInStatus } = this.props;
     return (
       <div>
         <h1>Home Page</h1>
         <h2>
           Status:
-          {this.props.loggedInStatus}
+          {loggedInStatus}
         </h2>
-        {this.props.loggedInStatus === 'NOT_LOGGED_IN' ? (
+        {loggedInStatus === 'NOT_LOGGED_IN' ? (
           [
-            <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />,
-            <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />,
+            <Login handleSuccessfulAuth={this.handleSuccessfulAuth} key={1} />,
+            <Registration
+              handleSuccessfulAuth={this.handleSuccessfulAuth}
+              key={2}
+            />,
           ]
         ) : (
           <button onClick={() => this.handleLogoutClick()}>Logout</button>
