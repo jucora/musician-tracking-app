@@ -10,6 +10,8 @@ import Home from './Home';
 import Dashboard from './Dashboard';
 import { changeLoggedInStatus, setCurrentUser } from '../actions/index';
 import NavBar from './NavBar';
+import SkillForm from './SkillForm';
+import Detail from '../components/Detail';
 
 class App extends React.Component {
   constructor() {
@@ -56,7 +58,6 @@ class App extends React.Component {
 
   render() {
     const { loggedInStatus, user } = this.props;
-    console.warn('current', user);
     const { contentLoaded } = this.state;
     return contentLoaded ? (
       <div className="App">
@@ -86,6 +87,9 @@ class App extends React.Component {
                 />
               )}
             />
+
+            <Route exact path="/skillForm" component={SkillForm} />
+            <Route path="/detail/:id" component={Detail} />
           </Switch>
           {loggedInStatus === 'LOGGED_IN' ? <NavBar /> : null}
         </BrowserRouter>

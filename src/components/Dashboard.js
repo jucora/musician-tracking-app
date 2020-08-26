@@ -4,6 +4,9 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
+import { NavLink } from 'react-router-dom';
+import Skill from './Skill';
+
 const Dashboard = (props) => {
   const { loggedInStatus, history, handleLogout, user } = props;
   const handleLogoutClick = () => {
@@ -22,10 +25,21 @@ const Dashboard = (props) => {
     <div>
       <h1>Dashboard Page</h1>
       <h2>Welcome {user.email}</h2>
+      <Skill />
       {loggedInStatus === 'LOGGED_IN' ? (
-        <button type="button" onClick={() => handleLogoutClick()}>
-          Logout
-        </button>
+        <>
+          <NavLink
+            className="nav-link"
+            activeClassName="nav-link-active"
+            to="/skillForm"
+          >
+            Add New Skill
+          </NavLink>
+
+          <button type="button" onClick={() => handleLogoutClick()}>
+            Logout
+          </button>
+        </>
       ) : (
         history.push('/')
       )}

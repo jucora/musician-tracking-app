@@ -31,12 +31,12 @@ export default class Registration extends React.Component {
             passwordConfirmation,
           },
         },
-        { withCredentials: true },
+        { withCredentials: true }
       )
-      .then(response => {
+      .then((response) => {
         handleSuccessfulAuth(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Registration error', error);
       });
   }
@@ -70,7 +70,7 @@ export default class Registration extends React.Component {
 
           <input
             type="password"
-            name="password_confirmation"
+            name="passwordConfirmation"
             placeholder="Password confirmation"
             value={passwordConfirmation}
             onChange={this.handleChange}
