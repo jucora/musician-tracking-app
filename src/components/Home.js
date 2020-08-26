@@ -13,9 +13,9 @@ export default class Home extends React.Component {
   }
 
   handleSuccessfulAuth(data) {
-    const { handleLogin, history } = this.props;
+    const { handleLogin, history } = this.props.params;
     handleLogin(data);
-    history.push('/dashboard');
+    history.push('/track');
   }
 
   handleLogoutClick() {

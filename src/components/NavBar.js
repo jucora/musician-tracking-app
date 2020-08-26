@@ -7,18 +7,32 @@ const NavBar = () => {
       <NavLink
         className="nav-link"
         activeClassName="nav-link-active"
-        exact
-        to="/"
+        to="/skillForm"
       >
-        Home
+        Add Skill
       </NavLink>
-
       <NavLink
         className="nav-link"
         activeClassName="nav-link-active"
-        to="/dashboard"
+        to="/track"
       >
-        Dashboard
+        Track.it
+      </NavLink>
+      <NavLink
+        className="nav-link"
+        activeClassName="nav-link-active"
+        exact
+        to="/progress"
+      >
+        Your Progress
+      </NavLink>
+      <NavLink
+        className="nav-link"
+        activeClassName="nav-link-active"
+        exact
+        to="/more"
+      >
+        More
       </NavLink>
     </div>
   );

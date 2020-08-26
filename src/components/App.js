@@ -7,11 +7,13 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import Proptypes from 'prop-types';
 import Home from './Home';
-import Dashboard from './Dashboard';
+import Track from './Track';
 import { changeLoggedInStatus, setCurrentUser } from '../actions/index';
 import NavBar from './NavBar';
 import SkillForm from './SkillForm';
-import Detail from '../components/Detail';
+import Detail from './Detail';
+import Progress from './Progress';
+import More from './More';
 
 class App extends React.Component {
   constructor() {
@@ -75,21 +77,22 @@ class App extends React.Component {
                 />
               )}
             />
+            <Route exact path="/skillForm" component={SkillForm} />
+            <Route exact path="/track" render={() => <Track user={user} />} />
+
+            <Route path="/detail/:id" component={Detail} />
+            <Route path="/progress" component={Progress} />
             <Route
-              exact
-              path="/dashboard"
+              path="/more"
               render={(props) => (
-                <Dashboard
+                <More
                   {...props}
-                  handleLogout={() => this.handleLogout}
+                  handleLogin={this.handleLogin}
                   loggedInStatus={loggedInStatus}
-                  user={user}
+                  handleLogout={this.handleLogout}
                 />
               )}
             />
-
-            <Route exact path="/skillForm" component={SkillForm} />
-            <Route path="/detail/:id" component={Detail} />
           </Switch>
           {loggedInStatus === 'LOGGED_IN' ? <NavBar /> : null}
         </BrowserRouter>

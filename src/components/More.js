@@ -1,14 +1,9 @@
-/* eslint no-console: ["error", { allow: ["warn", "error"] }] */
-
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-import { NavLink } from 'react-router-dom';
-import Skill from './Skill';
-
-const Dashboard = (props) => {
-  const { loggedInStatus, history, handleLogout, user } = props;
+const More = (props) => {
+  const { handleLogout, loggedInStatus, history } = props;
   const handleLogoutClick = () => {
     axios
       .delete('http://localhost:3001/logout', { withCredentials: true })
@@ -20,22 +15,11 @@ const Dashboard = (props) => {
         console.error('Logout error', error);
       });
   };
-
   return (
     <div>
-      <h1>Dashboard Page</h1>
-      <h2>Welcome {user.email}</h2>
-      <Skill />
       {loggedInStatus === 'LOGGED_IN' ? (
         <>
-          <NavLink
-            className="nav-link"
-            activeClassName="nav-link-active"
-            to="/skillForm"
-          >
-            Add New Skill
-          </NavLink>
-
+          <h1>More here</h1>
           <button type="button" onClick={() => handleLogoutClick()}>
             Logout
           </button>
@@ -47,10 +31,10 @@ const Dashboard = (props) => {
   );
 };
 
-Dashboard.propTypes = {
+More.propTypes = {
   handleLogout: PropTypes.func.isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
   loggedInStatus: PropTypes.string.isRequired,
 };
 
-export default Dashboard;
+export default More;
