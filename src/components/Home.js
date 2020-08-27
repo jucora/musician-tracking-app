@@ -31,7 +31,9 @@ export default class Home extends React.Component {
   }
 
   render() {
-    return (
+    const { loggedInStatus, history } = this.props;
+    console.warn('status log', loggedInStatus);
+    return loggedInStatus === 'NOT_LOGGED_IN' ? (
       <div className="home">
         <div className="forms">
           <h2>Log In</h2>
@@ -40,6 +42,8 @@ export default class Home extends React.Component {
           <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
         </div>
       </div>
+    ) : (
+      (history.push('/track'), true)
     );
   }
 }

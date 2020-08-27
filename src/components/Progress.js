@@ -8,13 +8,7 @@ class Progress extends React.Component {
     this.state = {
       data: {
         labels: [],
-        datasets: [
-          {
-            label: 'Progress',
-            backgroundColor: 'rgba(0, 255, 0, 0.75)',
-            data: null,
-          },
-        ],
+        datasets: [{}],
       },
     };
   }
@@ -32,8 +26,16 @@ class Progress extends React.Component {
 
         console.log('values are', values);
         this.setState({
-          data: { labels: skills },
-          data: { datasets: [{ label: 'Your Progress', data: values }] },
+          data: {
+            labels: skills,
+            datasets: [
+              {
+                label: 'Your Progress',
+                data: values,
+                backgroundColor: '#ADDC91',
+              },
+            ],
+          },
         });
       })
       .catch((error) => {
