@@ -67,7 +67,7 @@ class App extends React.Component {
     return contentLoaded ? (
       <div className="App">
         <BrowserRouter>
-          {loggedInStatus === 'NOT_LOGGED_IN' ? <Header /> : null}
+          <Header />
           <Switch>
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Registration} />

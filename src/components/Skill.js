@@ -45,7 +45,7 @@ class Skill extends React.Component {
 
   createDetail(array) {
     return array.map((skill, index) => (
-      <div key={skill.skill_id}>
+      <div key={skill.skill_id} className="skill">
         <Link
           key={skill.skill_id}
           to={{
@@ -70,12 +70,7 @@ class Skill extends React.Component {
 
   render() {
     const { skills } = this.state;
-    return (
-      <div>
-        <h2>Your Custom Skills</h2>
-        {this.createDetail(skills)}
-      </div>
-    );
+    return <div className="skillContainer">{this.createDetail(skills)}</div>;
   }
 }
 

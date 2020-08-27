@@ -1,10 +1,12 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 body {
+  height: 100vh;
   header {
     background-color: #62b5e5;
     color: #fff;
@@ -36,6 +38,43 @@ body {
         font-size: 16px;
         padding: 10px;
       }
+    }
+  }
+  .navBar {
+    background-color: #62b5e5;
+    bottom: 0;
+    height: 130px;
+    position: fixed;
+    width: 100%;
+    .navBarLinkBox {
+      background-color: #282828;
+      border: 1px solid #fff;
+      box-sizing: border-box;
+      float: left;
+      height: 130px;
+      width: 25%;
+      .nav-link {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .skillContainer {
+    background-color: #ececec;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+    width: 100%;
+
+    .skill {
+      background: #fff;
+      box-sizing: border-box;
+      float: left;
+      margin-top: 20px;
+      width: 40%;
     }
   }
 }
