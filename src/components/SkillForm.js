@@ -13,7 +13,6 @@ class SkillForm extends React.Component {
 
   handleSubmit(e) {
     const { name } = this.state;
-    const { user } = this.props;
     e.preventDefault();
 
     axios
