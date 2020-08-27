@@ -3,3 +3,39 @@
   padding: 0;
   list-style: none;
 }
+
+body {
+  header {
+    background-color: #62b5e5;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  .home {
+    color: #fff;
+    background: url('../img/cover.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    text-align: center;
+    padding-top: 20vh;
+
+    .forms {
+      border: 1px solid #fff;
+    }
+
+    .form {
+      margin-bottom: 20px;
+      margin-top: 20px;
+      input {
+        padding: 10px;
+      }
+      button {
+        background-color: #addc91;
+        color: #fff;
+        font-size: 16px;
+        padding: 10px;
+      }
+    }
+  }
+}

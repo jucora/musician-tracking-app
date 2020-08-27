@@ -7,7 +7,7 @@ const Track = (props) => {
   const { user } = props;
 
   return (
-    <div>
+    <div className="track">
       <h1>Track.it</h1>
       <h2>Welcome {user.email}</h2>
       <Skill />

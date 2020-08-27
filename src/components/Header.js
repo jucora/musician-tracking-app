@@ -1,14 +1,10 @@
 import React from 'react';
 
 const Header = () => (
-  <div className="title row">
-    <header>
-      <h1>SUPERHEROES</h1>
-      <div className="title-subtitle">
-        Search and get information about your favorite superhero!
-      </div>
-    </header>
-  </div>
+  <header>
+    <h1>Musician Tracking App</h1>
+    <div className="title-subtitle">Keep track of your musical skills!</div>
+  </header>
 );
 
 export default Header;

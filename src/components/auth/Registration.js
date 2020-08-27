@@ -47,7 +47,7 @@ export default class Registration extends React.Component {
   render() {
     const { email, password, passwordConfirmation } = this.state;
     return (
-      <div>
+      <div className="form">
         <form onSubmit={this.handleSubmit}>
           <input
             type="email"

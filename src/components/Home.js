@@ -32,11 +32,13 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Log In</h2>
-        <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
-        <h2>Create Account</h2>
-        <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
+      <div className="home">
+        <div className="forms">
+          <h2>Log In</h2>
+          <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
+          <h2>Create Account</h2>
+          <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
+        </div>
       </div>
     );
   }
