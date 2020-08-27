@@ -18,8 +18,6 @@ class Skill extends React.Component {
       .get('http://localhost:3001/skills', { withCredentials: true })
       .then((response) => {
         this.setState({ skills: response.data.currentSkills });
-        console.log('resppp', response);
-        return response;
       })
       .catch((error) => {
         console.error('error', error);
@@ -37,9 +35,7 @@ class Skill extends React.Component {
       })
       .then((response) => {
         if (response) {
-          this.setState({
-            skills: this.getCurrentSkills().theaadasn.data.currentSkills,
-          });
+          window.location.reload();
         }
       })
       .catch((error) => {

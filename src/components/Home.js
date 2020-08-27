@@ -3,8 +3,8 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import Registration from './auth/Registration';
 import Login from './auth/Login';
+import Registration from './auth/Registration';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -31,27 +31,12 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const { loggedInStatus } = this.props;
     return (
       <div>
-        <h1>Home Page</h1>
-        <h2>
-          Status:
-          {loggedInStatus}
-        </h2>
-        {loggedInStatus === 'NOT_LOGGED_IN' ? (
-          [
-            <Login handleSuccessfulAuth={this.handleSuccessfulAuth} key={1} />,
-            <Registration
-              handleSuccessfulAuth={this.handleSuccessfulAuth}
-              key={2}
-            />,
-          ]
-        ) : (
-          <button type="button" onClick={() => this.handleLogoutClick()}>
-            Logout
-          </button>
-        )}
+        <h2>Log In</h2>
+        <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
+        <h2>Create Account</h2>
+        <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
       </div>
     );
   }

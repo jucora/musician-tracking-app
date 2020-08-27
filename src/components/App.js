@@ -14,6 +14,9 @@ import SkillForm from './SkillForm';
 import Detail from './Detail';
 import Progress from './Progress';
 import More from './More';
+import Login from './auth/Login';
+import Registration from './auth/Registration';
+import Header from './Header';
 
 class App extends React.Component {
   constructor() {
@@ -64,7 +67,10 @@ class App extends React.Component {
     return contentLoaded ? (
       <div className="App">
         <BrowserRouter>
+          {loggedInStatus === 'NOT_LOGGED_IN' ? <Header /> : null}
           <Switch>
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Registration} />
             <Route
               exact
               path="/"

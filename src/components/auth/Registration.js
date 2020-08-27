@@ -10,7 +10,6 @@ export default class Registration extends React.Component {
       email: '',
       password: '',
       passwordConfirmation: '',
-      // registrationErrors: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -34,7 +33,6 @@ export default class Registration extends React.Component {
         { withCredentials: true }
       )
       .then((response) => {
-        console.warn('despues de registro', response);
         handleSuccessfulAuth(response.data);
       })
       .catch((error) => {
