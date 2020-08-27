@@ -4,24 +4,30 @@ import axios from 'axios';
 class Detail extends React.Component {
   constructor() {
     super();
-    this.state = { score: null };
+    this.state = { score: '' };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
+    const { skill } = this.props.location.state;
     const { score } = this.state;
 
     e.preventDefault();
     axios
       .post(
-        'http://localhost:3001/user_skills',
+        'http://localhost:3001/measures',
         {
           skill: {
+            id: skill.skill_id,
             newScore: score,
           },
         },
         { withCredentials: true }
       )
-      .then((response) => {})
+      .then((response) => {
+        console.log('response', response);
+      })
       .catch((error) => {
         console.error('error', error);
       });
@@ -47,7 +53,6 @@ class Detail extends React.Component {
             onChange={this.handleChange}
             required
           />
-
           <button type="submit">Add Score</button>
         </form>
       </div>

@@ -7,25 +7,16 @@ class Skill extends React.Component {
   constructor() {
     super();
     this.state = {
-      defaultSkills: [],
-      userSkills: [],
+      skills: [],
     };
   }
 
   componentDidMount() {
     axios
-      .get('http://localhost:3001/default_skills', { withCredentials: true })
+      .get('http://localhost:3001/skills', { withCredentials: true })
       .then((response) => {
-        this.setState({ defaultSkills: response.data.defaultSkills });
-      })
-      .catch((error) => {
-        console.error('error', error);
-      });
-
-    axios
-      .get('http://localhost:3001/user_skills', { withCredentials: true })
-      .then((response) => {
-        this.setState({ userSkills: response.data.userSkills });
+        console.log('response', response);
+        this.setState({ skills: response.data.currentSkills });
       })
       .catch((error) => {
         console.error('error', error);
@@ -35,27 +26,29 @@ class Skill extends React.Component {
   createDetail(array) {
     return array.map((skill, index) => (
       <Link
+        key={skill.skill_id}
         to={{
           pathname: `detail/${index}`,
-          state: { skillName: skill.name },
+          state: {
+            skillName: skill.name,
+            skill: skill,
+          },
         }}
       >
         <h2 key={skill.name}>
           <p>{skill.name}</p>
-          <p>{skill.score}</p>
+          <p>{skill.sum}</p>
         </h2>
       </Link>
     ));
   }
 
   render() {
-    const { defaultSkills, userSkills } = this.state;
+    const { skills } = this.state;
     return (
       <div>
-        <h2>Deafult Skills</h2>
-        {this.createDetail(defaultSkills)}
         <h2>Your Custom Skills</h2>
-        {this.createDetail(userSkills)}
+        {this.createDetail(skills)}
       </div>
     );
   }

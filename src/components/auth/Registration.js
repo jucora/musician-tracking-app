@@ -34,6 +34,7 @@ export default class Registration extends React.Component {
         { withCredentials: true }
       )
       .then((response) => {
+        console.warn('despues de registro', response);
         handleSuccessfulAuth(response.data);
       })
       .catch((error) => {

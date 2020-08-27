@@ -18,11 +18,10 @@ class SkillForm extends React.Component {
 
     axios
       .post(
-        'http://localhost:3001/user_skills',
+        'http://localhost:3001/skills',
         {
           newSkill: {
             name: name,
-            user_id: user.id,
           },
         },
         { withCredentials: true }

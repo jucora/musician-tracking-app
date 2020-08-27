@@ -13,7 +13,7 @@ export default class Home extends React.Component {
   }
 
   handleSuccessfulAuth(data) {
-    const { handleLogin, history } = this.props.params;
+    const { history, handleLogin } = this.props;
     handleLogin(data);
     history.push('/track');
   }
