@@ -1,8 +1,9 @@
+/* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-const More = (props) => {
+const More = props => {
   const { handleLogout, loggedInStatus, history } = props;
   const handleLogoutClick = () => {
     axios
@@ -11,7 +12,7 @@ const More = (props) => {
         handleLogout();
         window.location.reload();
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Logout error', error);
       });
   };

@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -7,19 +8,22 @@
 }
 
 body {
-  height: 100vh;
+  font-family: 'Poiret One', cursive;
+  margin: 0;
+  width: 100%;
+
   header {
     background-color: #62b5e5;
     color: #fff;
     padding: 20px;
     text-align: center;
   }
+
   .home {
     color: #fff;
     background: url('../img/cover.jpg');
     background-position: center;
     background-size: cover;
-    height: 100vh;
     text-align: center;
     padding-top: 20vh;
 
@@ -30,9 +34,11 @@ body {
     .form {
       margin-bottom: 20px;
       margin-top: 20px;
+
       input {
         padding: 10px;
       }
+
       button {
         background-color: #addc91;
         color: #fff;
@@ -41,12 +47,11 @@ body {
       }
     }
   }
+
   .navBar {
-    background-color: #62b5e5;
-    bottom: 0;
-    height: auto;
-    position: relative;
     width: 100%;
+    bottom: 0;
+    position: relative;
 
     .navBarLinkBox {
       background-color: #282828;
@@ -57,9 +62,11 @@ body {
       padding: 20px;
       text-align: center;
       width: 25%;
+
       &:hover {
         background-color: #62b5e5 !important;
       }
+
       .nav-link {
         color: #fff;
         text-decoration: none;
@@ -69,12 +76,13 @@ body {
 
   .skillContainer {
     background-color: #ececec;
-    box-sizing: border-box;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    padding: 20px;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
     width: 100%;
+    min-height: 100vh;
 
     .skill {
       background: #fff;
@@ -84,11 +92,14 @@ body {
       padding: 10px;
       text-align: center;
       width: 40%;
+
       p {
         color: #000;
       }
+
       &:hover {
         background-color: #282828;
+
         p {
           color: #fff;
         }

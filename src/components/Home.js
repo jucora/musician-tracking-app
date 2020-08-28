@@ -25,7 +25,7 @@ export default class Home extends React.Component {
       .then(() => {
         handleLogout();
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Logout error', error);
       });
   }

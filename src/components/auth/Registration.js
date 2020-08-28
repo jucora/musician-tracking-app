@@ -30,12 +30,12 @@ export default class Registration extends React.Component {
             passwordConfirmation,
           },
         },
-        { withCredentials: true }
+        { withCredentials: true },
       )
-      .then((response) => {
+      .then(response => {
         handleSuccessfulAuth(response.data);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Registration error', error);
       });
   }

@@ -1,6 +1,8 @@
+/* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class Progress extends React.Component {
   constructor(props) {
@@ -12,16 +14,18 @@ class Progress extends React.Component {
       },
     };
   }
+
   componentDidMount() {
     axios
       .get('http://localhost:3001/skills', { withCredentials: true })
-      .then((response) => {
-        let skills = [];
-        let values = [];
+      .then(response => {
+        const skills = [];
+        const values = [];
 
-        response.data.currentSkills.map((skill) => {
+        response.data.currentSkills.map(skill => {
           skills.push(skill.name);
           values.push(skill.sum);
+          return true;
         });
         this.setState({
           data: {
@@ -36,12 +40,14 @@ class Progress extends React.Component {
           },
         });
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('error', error);
       });
   }
+
   render() {
     const { loggedInStatus, history } = this.props;
+    const { data } = this.state;
     return loggedInStatus === 'LOGGED_IN' ? (
       <div
         style={{
@@ -55,7 +61,7 @@ class Progress extends React.Component {
           options={{
             responsive: true,
           }}
-          data={this.state.data}
+          data={data}
         />
       </div>
     ) : (
@@ -63,5 +69,10 @@ class Progress extends React.Component {
     );
   }
 }
+
+Progress.propTypes = {
+  loggedInStatus: PropTypes.string.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
 export default Progress;

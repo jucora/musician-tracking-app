@@ -1,5 +1,8 @@
+/* eslint no-console: ["error", { allow: ["warn", "error"] }] */
+
 import React from 'react';
 import axios from 'axios';
+import PropTypes, { string } from 'prop-types';
 
 class Detail extends React.Component {
   constructor() {
@@ -15,19 +18,20 @@ class Detail extends React.Component {
       .delete(`http://localhost:3001/skills/destroy/${skillId}`, {
         withCredentials: true,
       })
-      .then((response) => {
+      .then(response => {
         if (response) {
           const { history } = this.props;
           history.push('/track');
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('error', error);
       });
   }
 
   handleSubmit(e) {
-    const { skill } = this.props.location.state;
+    const { location } = this.props;
+    const { skill } = location.state;
     const { score } = this.state;
     const { history } = this.props;
 
@@ -41,13 +45,12 @@ class Detail extends React.Component {
             newScore: score,
           },
         },
-        { withCredentials: true }
+        { withCredentials: true },
       )
-      .then((response) => {
+      .then(() => {
         history.push('/progress');
-        console.log('response', response);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('error', error);
       });
   }
@@ -57,7 +60,8 @@ class Detail extends React.Component {
   }
 
   render() {
-    const { skillName, skill } = this.props.location.state;
+    const { location } = this.props;
+    const { skillName, skill } = location.state;
     const { score } = this.state;
     const { loggedInStatus, history } = this.props;
     return loggedInStatus === 'LOGGED_IN' ? (
@@ -87,5 +91,11 @@ class Detail extends React.Component {
     );
   }
 }
+
+Detail.propTypes = {
+  location: PropTypes.objectOf(PropTypes.any).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+  loggedInStatus: string.isRequired,
+};
 
 export default Detail;
