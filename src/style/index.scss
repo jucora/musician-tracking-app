@@ -7,6 +7,74 @@
   list-style: none;
 }
 
+// Animations
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 body {
   font-family: 'Poiret One', cursive;
   margin: 0;
@@ -126,6 +194,11 @@ body {
   }
 
   .addSkillForm {
+    -webkit-animation: fadeIn 1s linear 0s;
+    -moz-animation: fadeIn 1s linear 0s;
+    -ms-animation: fadeIn 1s linear 0s;
+    -o-animation: fadeIn 1s linear 0s;
+    animation: fadeIn 1s linear 0s;
     border: 1px solid #262626;
     display: flex;
     justify-content: center;
@@ -154,5 +227,8 @@ body {
 
   .track {
     text-align: center;
+    h2 {
+      padding: 20px;
+    }
   }
 }
