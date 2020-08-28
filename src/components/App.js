@@ -92,7 +92,12 @@ class App extends React.Component {
               )}
             />
 
-            <Route path="/detail/:id" component={Detail} />
+            <Route
+              path="/detail/:id"
+              render={(props) => (
+                <Detail {...props} loggedInStatus={loggedInStatus} />
+              )}
+            />
             <Route
               path="/progress"
               render={(props) => (

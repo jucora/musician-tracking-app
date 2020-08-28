@@ -11,7 +11,7 @@ const NavBar = () => {
           to="/skillForm"
         >
           <div style={{ width: '100%', textAlign: 'center' }}>
-            <img style={{ width: '30%' }} src={require('../img/add.svg')}></img>
+            <img style={{ width: '25%' }} src={require('../img/add.svg')}></img>
           </div>
           Add Skill
         </NavLink>
@@ -24,7 +24,7 @@ const NavBar = () => {
         >
           <div style={{ width: '100%', textAlign: 'center' }}>
             <img
-              style={{ width: '30%' }}
+              style={{ width: '25%' }}
               src={require('../img/track.svg')}
             ></img>
           </div>
@@ -40,7 +40,7 @@ const NavBar = () => {
         >
           <div style={{ width: '100%', textAlign: 'center' }}>
             <img
-              style={{ width: '30%' }}
+              style={{ width: '25%' }}
               src={require('../img/progress.png')}
             ></img>
           </div>
@@ -56,7 +56,7 @@ const NavBar = () => {
         >
           <div style={{ width: '100%', textAlign: 'center' }}>
             <img
-              style={{ width: '30%' }}
+              style={{ width: '25%' }}
               src={require('../img/more.svg')}
             ></img>
           </div>

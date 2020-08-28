@@ -7,11 +7,29 @@ class Detail extends React.Component {
     this.state = { score: '' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(skillId) {
+    axios
+      .delete(`http://localhost:3001/skills/destroy/${skillId}`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        if (response) {
+          const { history } = this.props;
+          history.push('/track');
+        }
+      })
+      .catch((error) => {
+        console.error('error', error);
+      });
   }
 
   handleSubmit(e) {
     const { skill } = this.props.location.state;
     const { score } = this.state;
+    const { history } = this.props;
 
     e.preventDefault();
     axios
@@ -26,6 +44,7 @@ class Detail extends React.Component {
         { withCredentials: true }
       )
       .then((response) => {
+        history.push('/progress');
         console.log('response', response);
       })
       .catch((error) => {
@@ -38,9 +57,10 @@ class Detail extends React.Component {
   }
 
   render() {
-    const { skillName } = this.props.location.state;
+    const { skillName, skill } = this.props.location.state;
     const { score } = this.state;
-    return (
+    const { loggedInStatus, history } = this.props;
+    return loggedInStatus === 'LOGGED_IN' ? (
       <div>
         <h1>{skillName}</h1>
         <h2>Add Score</h2>
@@ -54,8 +74,16 @@ class Detail extends React.Component {
             required
           />
           <button type="submit">Add Score</button>
+          <button
+            type="button"
+            onClick={() => this.handleClick(skill.skill_id)}
+          >
+            Remove
+          </button>
         </form>
       </div>
+    ) : (
+      (history.push('/'), true)
     );
   }
 }

@@ -9,8 +9,6 @@ class Skill extends React.Component {
     this.state = {
       skills: [],
     };
-
-    this.handleClick = this.handleClick.bind(this);
   }
 
   getCurrentSkills() {
@@ -28,21 +26,6 @@ class Skill extends React.Component {
     this.getCurrentSkills();
   }
 
-  handleClick(skillId) {
-    axios
-      .delete(`http://localhost:3001/skills/destroy/${skillId}`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        if (response) {
-          window.location.reload();
-        }
-      })
-      .catch((error) => {
-        console.error('error', error);
-      });
-  }
-
   createDetail(array) {
     return array.map((skill, index) => (
       <div key={skill.skill_id} className="skill">
@@ -56,14 +39,17 @@ class Skill extends React.Component {
             },
           }}
         >
+          <div style={{ width: '100%', textAlign: 'center' }}>
+            <img
+              style={{ width: '25%' }}
+              src={require('../img/skill.svg')}
+            ></img>
+          </div>
           <h2 key={skill.name}>
             <p>{skill.name}</p>
             <p>{skill.sum}</p>
           </h2>
         </Link>
-        <button type="button" onClick={() => this.handleClick(skill.skill_id)}>
-          Remove
-        </button>
       </div>
     ));
   }

@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  text-decoration: none;
   list-style: none;
 }
 
@@ -44,7 +45,7 @@ body {
     background-color: #62b5e5;
     bottom: 0;
     height: auto;
-    position: fixed;
+    position: relative;
     width: 100%;
 
     .navBarLinkBox {
@@ -80,7 +81,22 @@ body {
       box-sizing: border-box;
       float: left;
       margin-top: 20px;
+      padding: 10px;
+      text-align: center;
       width: 40%;
+      p {
+        color: #000;
+      }
+      &:hover {
+        background-color: #282828;
+        p {
+          color: #fff;
+        }
+      }
     }
+  }
+
+  .track {
+    text-align: center;
   }
 }
