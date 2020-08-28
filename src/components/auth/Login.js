@@ -4,6 +4,8 @@ import React from 'react';
 import axios from 'axios';
 import PropType from 'prop-types';
 
+const passwordImage = require('../../img/password.png');
+
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -30,14 +32,14 @@ export default class Login extends React.Component {
             password,
           },
         },
-        { withCredentials: true },
+        { withCredentials: true }
       )
-      .then(response => {
+      .then((response) => {
         if (response.data.logged_in) {
           handleSuccessfulAuth(response.data);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Login error', error);
       });
   }

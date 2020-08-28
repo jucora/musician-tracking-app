@@ -25,10 +25,10 @@ class SkillForm extends React.Component {
             name,
           },
         },
-        { withCredentials: true },
+        { withCredentials: true }
       )
       .then(() => {})
-      .catch(error => {
+      .catch((error) => {
         console.error('error', error);
       });
   }
@@ -56,7 +56,7 @@ class SkillForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   user: state.musicianReducer.user,
 });
 
