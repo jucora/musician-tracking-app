@@ -87,8 +87,8 @@ class App extends React.Component {
             <Route
               exact
               path="/track"
-              render={() => (
-                <Track user={user} handleLogin={this.handleLogin} />
+              render={(props) => (
+                <Track user={user} {...props} loggedInStatus={loggedInStatus} />
               )}
             />
 
