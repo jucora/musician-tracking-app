@@ -18,13 +18,13 @@ class Detail extends React.Component {
       .delete(`http://localhost:3001/skills/destroy/${skillId}`, {
         withCredentials: true,
       })
-      .then(response => {
+      .then((response) => {
         if (response) {
           const { history } = this.props;
           history.push('/track');
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('error', error);
       });
   }
@@ -45,12 +45,12 @@ class Detail extends React.Component {
             newScore: score,
           },
         },
-        { withCredentials: true },
+        { withCredentials: true }
       )
       .then(() => {
         history.push('/progress');
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('error', error);
       });
   }
@@ -78,6 +78,7 @@ class Detail extends React.Component {
             required
           />
           <button type="submit">Add Score</button>
+
           <button
             type="button"
             onClick={() => this.handleClick(skill.skill_id)}

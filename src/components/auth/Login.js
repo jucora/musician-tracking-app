@@ -4,8 +4,6 @@ import React from 'react';
 import axios from 'axios';
 import PropType from 'prop-types';
 
-const passwordImage = require('../../img/password.png');
-
 export default class Login extends React.Component {
   constructor(props) {
     super(props);

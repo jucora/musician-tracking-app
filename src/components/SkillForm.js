@@ -8,13 +8,13 @@ class SkillForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { name: '' };
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
     const { name } = this.state;
+    const { history } = this.props;
     e.preventDefault();
 
     axios
@@ -27,7 +27,9 @@ class SkillForm extends React.Component {
         },
         { withCredentials: true }
       )
-      .then(() => {})
+      .then(() => {
+        history.push('/track');
+      })
       .catch((error) => {
         console.error('error', error);
       });
@@ -40,18 +42,21 @@ class SkillForm extends React.Component {
   render() {
     const { name } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Skill Name"
-          value={name}
-          onChange={this.handleChange}
-          required
-        />
+      <div className="addSkillForm">
+        <form onSubmit={this.handleSubmit}>
+          <h2>New Skill</h2>
+          <input
+            type="text"
+            name="name"
+            placeholder="Skill Name"
+            value={name}
+            onChange={this.handleChange}
+            required
+          />
 
-        <button type="submit">Add New Skill</button>
-      </form>
+          <button type="submit">Add New Skill</button>
+        </form>
+      </div>
     );
   }
 }

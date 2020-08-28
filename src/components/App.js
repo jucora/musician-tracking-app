@@ -83,7 +83,11 @@ class App extends React.Component {
                 />
               )}
             />
-            <Route exact path="/skillForm" component={SkillForm} />
+            <Route
+              exact
+              path="/skillForm"
+              render={(props) => <SkillForm {...props} />}
+            />
             <Route
               exact
               path="/track"
