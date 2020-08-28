@@ -65,29 +65,29 @@ class Detail extends React.Component {
     const { score } = this.state;
     const { loggedInStatus, history } = this.props;
     return loggedInStatus === 'LOGGED_IN' ? (
-      <div>
-        <h1>Skill: {skillName}</h1>
-        <h2>Options</h2>
-        <div className="addSkillForm">
-          <form onSubmit={this.handleSubmit}>
-            <input
-              type="text"
-              name="score"
-              placeholder="Score"
-              value={score}
-              onChange={this.handleChange}
-              required
-            />
-            <button type="submit">Add Score</button>
-
-            <button
-              type="button"
-              onClick={() => this.handleClick(skill.skill_id)}
-            >
-              Remove
-            </button>
-          </form>
-        </div>
+      <div className="addSkillForm">
+        <form onSubmit={this.handleSubmit}>
+          <h1>Your Skill: {skillName}</h1>
+          <h2>Add score</h2>
+          <input
+            type="text"
+            name="score"
+            placeholder="Score"
+            value={score}
+            onChange={this.handleChange}
+            required
+          />
+          <button type="submit">Add Score</button>
+          <br />
+          <h2>Delete Skill</h2>
+          <button
+            type="button"
+            onClick={() => this.handleClick(skill.skill_id)}
+            className="deleteSkill"
+          >
+            Remove
+          </button>
+        </form>
       </div>
     ) : (
       (history.push('/'), true)

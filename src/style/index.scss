@@ -79,6 +79,7 @@ body {
   font-family: 'Poiret One', cursive;
   margin: 0;
   width: 100%;
+  height: auto;
 
   header {
     background-color: #62b5e5;
@@ -201,15 +202,20 @@ body {
     animation: fadeIn 1s linear 0s;
     border: 1px solid #262626;
     display: flex;
+    margin-bottom: 200px !important;
     justify-content: center;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 1%;
     text-align: center;
     padding: 30px;
     width: 50%;
+    h1 {
+      margin-bottom: 20px;
+    }
     h2 {
       font-size: 24px;
       margin-bottom: 10px;
+      margin-top: 20px;
       text-align: center;
     }
     input {
@@ -222,6 +228,12 @@ body {
       font-size: 16px;
       margin-top: 10px;
       padding: 10px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .deleteSkill {
+      background-color: #d11a2a;
     }
   }
 
