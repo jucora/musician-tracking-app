@@ -23,8 +23,6 @@ class Progress extends React.Component {
           skills.push(skill.name);
           values.push(skill.sum);
         });
-
-        console.log('values are', values);
         this.setState({
           data: {
             labels: skills,
@@ -44,7 +42,6 @@ class Progress extends React.Component {
   }
   render() {
     const { loggedInStatus, history } = this.props;
-    console.log('logged progress', loggedInStatus);
     return loggedInStatus === 'LOGGED_IN' ? (
       <div
         style={{

@@ -43,16 +43,22 @@ body {
   .navBar {
     background-color: #62b5e5;
     bottom: 0;
-    height: 130px;
+    height: auto;
     position: fixed;
     width: 100%;
+
     .navBarLinkBox {
       background-color: #282828;
       border: 1px solid #fff;
       box-sizing: border-box;
+      font-size: 24px;
       float: left;
-      height: 130px;
+      padding: 20px;
+      text-align: center;
       width: 25%;
+      &:hover {
+        background-color: #62b5e5 !important;
+      }
       .nav-link {
         color: #fff;
         text-decoration: none;

@@ -10,6 +10,9 @@ const NavBar = () => {
           activeClassName="nav-link-active"
           to="/skillForm"
         >
+          <div style={{ width: '100%', textAlign: 'center' }}>
+            <img style={{ width: '30%' }} src={require('../img/add.svg')}></img>
+          </div>
           Add Skill
         </NavLink>
       </div>
@@ -19,6 +22,12 @@ const NavBar = () => {
           activeClassName="nav-link-active"
           to="/track"
         >
+          <div style={{ width: '100%', textAlign: 'center' }}>
+            <img
+              style={{ width: '30%' }}
+              src={require('../img/track.svg')}
+            ></img>
+          </div>
           Track.it
         </NavLink>
       </div>
@@ -29,6 +38,12 @@ const NavBar = () => {
           exact
           to="/progress"
         >
+          <div style={{ width: '100%', textAlign: 'center' }}>
+            <img
+              style={{ width: '30%' }}
+              src={require('../img/progress.png')}
+            ></img>
+          </div>
           Your Progress
         </NavLink>
       </div>
@@ -39,6 +54,12 @@ const NavBar = () => {
           exact
           to="/more"
         >
+          <div style={{ width: '100%', textAlign: 'center' }}>
+            <img
+              style={{ width: '30%' }}
+              src={require('../img/more.svg')}
+            ></img>
+          </div>
           More
         </NavLink>
       </div>
