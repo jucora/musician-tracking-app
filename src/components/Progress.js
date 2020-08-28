@@ -43,7 +43,9 @@ class Progress extends React.Component {
       });
   }
   render() {
-    return (
+    const { loggedInStatus, history } = this.props;
+    console.log('logged progress', loggedInStatus);
+    return loggedInStatus === 'LOGGED_IN' ? (
       <div
         style={{
           position: 'relative',
@@ -59,6 +61,8 @@ class Progress extends React.Component {
           data={this.state.data}
         />
       </div>
+    ) : (
+      (history.push('/'), true)
     );
   }
 }

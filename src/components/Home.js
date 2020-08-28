@@ -32,7 +32,6 @@ export default class Home extends React.Component {
 
   render() {
     const { loggedInStatus, history } = this.props;
-    console.warn('status log', loggedInStatus);
     return loggedInStatus === 'NOT_LOGGED_IN' ? (
       <div className="home">
         <div className="forms">

@@ -84,10 +84,21 @@ class App extends React.Component {
               )}
             />
             <Route exact path="/skillForm" component={SkillForm} />
-            <Route exact path="/track" render={() => <Track user={user} />} />
+            <Route
+              exact
+              path="/track"
+              render={() => (
+                <Track user={user} handleLogin={this.handleLogin} />
+              )}
+            />
 
             <Route path="/detail/:id" component={Detail} />
-            <Route path="/progress" component={Progress} />
+            <Route
+              path="/progress"
+              render={(props) => (
+                <Progress {...props} loggedInStatus={loggedInStatus} />
+              )}
+            />
             <Route
               path="/more"
               render={(props) => (
