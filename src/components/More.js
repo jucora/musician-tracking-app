@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 const More = (props) => {
-  console.warn(props.user);
   const { handleLogout, loggedInStatus, history, user } = props;
   const handleLogoutClick = () => {
     axios

@@ -60,10 +60,10 @@ class Detail extends React.Component {
   }
 
   render() {
-    const { location } = this.props;
+    const { location, loggedInStatus, history } = this.props;
+
     const { skillName, skill } = location.state;
     const { score } = this.state;
-    const { loggedInStatus, history } = this.props;
     return loggedInStatus === 'LOGGED_IN' ? (
       <div className="addSkillForm">
         <form onSubmit={this.handleSubmit}>
