@@ -68,7 +68,7 @@ class Detail extends React.Component {
       <div className="addSkillForm">
         <form onSubmit={this.handleSubmit}>
           <h1>Your Skill: {skillName}</h1>
-          <h2>Add score</h2>
+          <h2>Hours of study</h2>
           <input
             type="text"
             name="score"

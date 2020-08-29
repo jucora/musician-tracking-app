@@ -1,6 +1,6 @@
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 import React from 'react';
-import { Line } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
@@ -57,7 +57,7 @@ class Progress extends React.Component {
           margin: 'auto',
         }}
       >
-        <Line
+        <Bar
           options={{
             responsive: true,
           }}
