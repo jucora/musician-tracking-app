@@ -30,7 +30,7 @@ class Track extends React.Component {
     return loggedInStatus === 'LOGGED_IN' ? (
       <div className="track">
         <h2>Hello {user.email}</h2>
-        <div className="records">
+        <div className="totalScore">
           <div>
             <h2>Total Hours</h2>
             <p>{total}</p>

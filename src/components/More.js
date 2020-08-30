@@ -25,9 +25,25 @@ const More = (props) => {
           <p>User: {user.email}</p>
           <p>Your ID: {user.id}</p>
           <p>Registered since: {user.created_at}</p>
+
           <button type="button" onClick={() => handleLogoutClick()}>
             Logout
           </button>
+
+          <div className="author">
+            <p>Author: Julian Belmonte</p>
+            <p>
+              Thank you for your support in this project. I invite you to visit
+              my{' '}
+              <a
+                href="https://jucora.github.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                portafolio
+              </a>
+            </p>
+          </div>
         </>
       ) : (
         history.push('/')
