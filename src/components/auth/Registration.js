@@ -9,7 +9,8 @@ export default class Registration extends React.Component {
     this.state = {
       email: '',
       password: '',
-      passwordConfirmation: '',
+      password_confirmation: '',
+      errors: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -17,7 +18,7 @@ export default class Registration extends React.Component {
 
   handleSubmit(e) {
     const { handleSuccessfulAuth } = this.props;
-    const { email, password, passwordConfirmation } = this.state;
+    const { email, password, password_confirmation } = this.state;
 
     e.preventDefault();
     axios
@@ -27,15 +28,24 @@ export default class Registration extends React.Component {
           user: {
             email,
             password,
-            passwordConfirmation,
+            password_confirmation,
           },
         },
-        { withCredentials: true },
+        { withCredentials: true }
       )
-      .then(response => {
-        handleSuccessfulAuth(response.data);
+      .then((response) => {
+        console.warn(response);
+        if (response.data.errors) {
+          console.warn(response);
+
+          this.setState({ errors: response.data.errors });
+        }
+        if (response.data.user) {
+          console.warn(response);
+          handleSuccessfulAuth(response.data);
+        }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Registration error', error);
       });
   }
@@ -45,10 +55,16 @@ export default class Registration extends React.Component {
   }
 
   render() {
-    const { email, password, passwordConfirmation } = this.state;
+    const { email, password, password_confirmation, errors } = this.state;
     return (
       <div className="form">
         <form onSubmit={this.handleSubmit}>
+          {errors.map((error) => (
+            <h2 key={error} className="error">
+              {error}
+            </h2>
+          ))}
+
           <input
             type="email"
             name="email"
@@ -69,9 +85,9 @@ export default class Registration extends React.Component {
 
           <input
             type="password"
-            name="passwordConfirmation"
+            name="password_confirmation"
             placeholder="Password confirmation"
-            value={passwordConfirmation}
+            value={password_confirmation}
             onChange={this.handleChange}
             required
           />

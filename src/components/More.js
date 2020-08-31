@@ -40,7 +40,7 @@ const More = (props) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                portafolio
+                portfolio
               </a>
             </p>
           </div>

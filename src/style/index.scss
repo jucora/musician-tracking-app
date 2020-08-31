@@ -79,13 +79,16 @@ body {
   font-family: 'Poiret One', cursive;
   margin: 0;
   width: 100%;
-  height: auto;
 
   header {
     background-color: #62b5e5;
     color: #fff;
     padding: 20px;
     text-align: center;
+  }
+
+  .error {
+    color: red;
   }
 
   .home {
@@ -101,13 +104,11 @@ body {
     background-size: cover;
     text-align: center;
     height: 100vh;
-    position: fixed;
     width: 100%;
-
+    padding-top: 30px;
     .forms {
       border: 1px solid #fff;
       margin: auto;
-      margin-top: 3%;
       width: 75%;
       h2 {
         margin-top: 20px;
@@ -117,7 +118,7 @@ body {
     .form {
       padding-left: 30px;
       margin-bottom: 20px;
-
+      overflow: scroll !important;
       input {
         display: block;
         margin: auto;

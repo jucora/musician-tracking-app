@@ -10,6 +10,7 @@ export default class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
+      error: null,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -32,6 +33,10 @@ export default class Login extends React.Component {
         { withCredentials: true }
       )
       .then((response) => {
+        console.warn(response);
+        if (response.data.error) {
+          this.setState({ error: response.data.error });
+        }
         if (response.data.logged_in) {
           handleSuccessfulAuth(response.data);
         }
@@ -50,6 +55,7 @@ export default class Login extends React.Component {
     return (
       <div className="form">
         <form onSubmit={this.handleSubmit}>
+          <h2 className="error">{this.state.error}</h2>
           <input
             type="email"
             name="email"
