@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 class SkillForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: '' };
+    this.state = { name: '', errors: [] };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -27,8 +27,12 @@ class SkillForm extends React.Component {
         },
         { withCredentials: true }
       )
-      .then(() => {
-        history.push('/track');
+      .then((response) => {
+        if (response.data.errors) {
+          this.setState({ errors: response.data.errors });
+        } else {
+          history.push('/track');
+        }
       })
       .catch((error) => {
         console.error('error', error);
@@ -40,11 +44,12 @@ class SkillForm extends React.Component {
   }
 
   render() {
-    const { name } = this.state;
+    const { name, errors } = this.state;
     return (
       <div className="addSkillForm">
         <form onSubmit={this.handleSubmit}>
           <h2>New Skill</h2>
+          <h2 className="error">{errors}</h2>
           <input
             type="text"
             name="name"
