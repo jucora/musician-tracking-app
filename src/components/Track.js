@@ -14,7 +14,6 @@ class Track extends React.Component {
     axios
       .get('http://localhost:3001/measures', { withCredentials: true })
       .then((response) => {
-        console.warn('resul', response);
         this.setState({
           total: response.data.totalScore[0].total,
         });

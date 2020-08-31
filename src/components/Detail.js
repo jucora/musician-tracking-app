@@ -7,7 +7,7 @@ import PropTypes, { string } from 'prop-types';
 class Detail extends React.Component {
   constructor() {
     super();
-    this.state = { score: '' };
+    this.state = { score: '', errors: [] };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -47,8 +47,14 @@ class Detail extends React.Component {
         },
         { withCredentials: true }
       )
-      .then(() => {
-        history.push('/progress');
+      .then((response) => {
+        console.warn(response);
+        if (response.data.errors) {
+          this.setState({ errors: response.data.errors });
+        }
+        if (response.data.newScore) {
+          history.push('/progress');
+        }
       })
       .catch((error) => {
         console.error('error', error);
@@ -63,11 +69,15 @@ class Detail extends React.Component {
     const { location, loggedInStatus, history } = this.props;
 
     const { skillName, skill } = location.state;
-    const { score } = this.state;
+    const { score, errors } = this.state;
     return loggedInStatus === 'LOGGED_IN' ? (
       <div className="addSkillForm">
         <form onSubmit={this.handleSubmit}>
           <h1>Your Skill: {skillName}</h1>
+          {errors.map((error) => (
+            <h2 className="error">{error}</h2>
+          ))}
+
           <h2>Hours of study</h2>
           <input
             type="text"
