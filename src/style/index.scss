@@ -7,7 +7,7 @@
   list-style: none;
 }
 
-// Animations
+// ANIMATIONS
 
 @keyframes fadeIn {
   0% {
@@ -79,6 +79,10 @@ body {
   font-family: 'Poiret One', cursive;
   margin: 0;
   width: 100%;
+  height: auto;
+  background: #fff;
+  background-position: center;
+  background-size: cover;
 
   header {
     background-color: #62b5e5;
@@ -91,34 +95,126 @@ body {
     color: red;
   }
 
-  .home {
-    color: #fff;
-    background: rgb(98, 181, 229);
-    background: linear-gradient(
-      90deg,
-      rgba(98, 181, 229, 0.5) 0%,
-      rgba(101, 158, 190, 1) 50%,
-      rgba(98, 181, 229, 0.5) 100%
-    );
-    background-position: center;
-    background-size: cover;
+  .newScoreForm,
+  .newSkillForm {
+    -webkit-animation: fadein 1s linear 0s;
+    -moz-animation: fadein 1s linear 0s;
+    -ms-animation: fadein 1s linear 0s;
+    -o-animation: fadein 1s linear 0s;
+    animation: fadeIn 1s linear 0s;
+    display: flex;
+    justify-content: center;
     text-align: center;
-    height: 100vh;
-    width: 100%;
-    padding-top: 30px;
-    .forms {
-      border: 1px solid #fff;
-      margin: auto;
-      width: 75%;
-      h2 {
-        margin-top: 20px;
+    padding: 30px;
+    width: 50%;
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    input {
+      padding: 10px;
+      width: 100%;
+    }
+
+    button {
+      background-color: #addc91;
+      color: #fff;
+      font-size: 16px;
+      margin-top: 10px;
+      padding: 10px;
+
+      &:hover {
+        cursor: pointer;
       }
     }
+
+    .deleteSkill {
+      background-color: #d11a2a;
+    }
+  }
+
+  .moreBox {
+    -webkit-animation: fadein 1s linear 0s;
+    -moz-animation: fadein 1s linear 0s;
+    -ms-animation: fadein 1s linear 0s;
+    -o-animation: fadein 1s linear 0s;
+    animation: fadeIn 1s linear 0s;
+    font-weight: bold;
+    text-align: center;
+
+    h1 {
+      margin-top: 1%;
+    }
+
+    p {
+      font-size: 24px;
+    }
+
+    .logoutButton {
+      background-color: #addc91;
+      color: #fff;
+      font-size: 24px;
+      margin-top: 2%;
+      padding: 10px;
+
+      &:hover {
+        background-color: #d11a2a;
+        cursor: pointer;
+      }
+    }
+
+    .author {
+      margin-top: 5%;
+
+      p {
+        font-size: 16px;
+
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .newSkillForm {
+    margin: 6% auto 120px auto;
+  }
+
+  .newScoreForm {
+    margin: 1% auto 150px auto;
+  }
+
+  .home {
+    background: rgb(98, 181, 229);
+    background:
+      linear-gradient(
+        90deg,
+        rgba(98, 181, 229, 0.5) 0%,
+        rgba(101, 158, 190, 1) 50%,
+        rgba(98, 181, 229, 0.5) 100%
+      );
+    color: #fff;
+    text-align: center;
+    height: 100vh;
+    position: relative;
+    width: 100%;
 
     .form {
       padding-left: 30px;
       margin-bottom: 20px;
-      overflow: scroll !important;
+
+      h2 {
+        padding-top: 20px;
+      }
+
       input {
         display: block;
         margin: auto;
@@ -195,63 +291,23 @@ body {
     }
   }
 
-  .addSkillForm {
-    -webkit-animation: fadeIn 1s linear 0s;
-    -moz-animation: fadeIn 1s linear 0s;
-    -ms-animation: fadeIn 1s linear 0s;
-    -o-animation: fadeIn 1s linear 0s;
-    animation: fadeIn 1s linear 0s;
-    border: 1px solid #262626;
-    display: flex;
-    margin-bottom: 200px !important;
-    justify-content: center;
-    margin: auto;
-    margin-top: 1%;
-    text-align: center;
-    padding: 30px;
-    width: 50%;
-    h1 {
-      margin-bottom: 20px;
-    }
-    h2 {
-      font-size: 24px;
-      margin-bottom: 10px;
-      margin-top: 20px;
-      text-align: center;
-    }
-    input {
-      padding: 10px;
-      width: 100%;
-    }
-    button {
-      background-color: #addc91;
-      color: #fff;
-      font-size: 16px;
-      margin-top: 10px;
-      padding: 10px;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    .deleteSkill {
-      background-color: #d11a2a;
-    }
-  }
-
   .track {
     text-align: center;
-    h2 {
-      padding: 20px;
+
+    .trackTitle {
+      padding: 10px;
     }
+
     .totalScore {
       display: flex;
       justify-content: center;
       padding-bottom: 20px;
+
       div {
-        -webkit-animation: fadeIn 1s linear 0s;
-        -moz-animation: fadeIn 1s linear 0s;
-        -ms-animation: fadeIn 1s linear 0s;
-        -o-animation: fadeIn 1s linear 0s;
+        -webkit-animation: fadein 1s linear 0s;
+        -moz-animation: fadein 1s linear 0s;
+        -ms-animation: fadein 1s linear 0s;
+        -o-animation: fadein 1s linear 0s;
         animation: fadeIn 1s linear 0s;
         border: 1px solid #fff;
         border-radius: 100%;
@@ -261,41 +317,15 @@ body {
       }
     }
   }
+}
 
-  .moreBox {
-    -webkit-animation: fadeIn 1s linear 0s;
-    -moz-animation: fadeIn 1s linear 0s;
-    -ms-animation: fadeIn 1s linear 0s;
-    -o-animation: fadeIn 1s linear 0s;
-    animation: fadeIn 1s linear 0s;
+@media only screen and (max-width: 767px) {
+  .navBarLinkBox {
+    padding: 5px !important;
+    width: 50% !important;
 
-    font-weight: bold;
-    text-align: center;
-    h1 {
-      margin-top: 1%;
-    }
-    p {
-      font-size: 24px;
-    }
-    button {
-      background-color: #addc91;
-      color: #fff;
-      font-size: 24px;
-      margin-top: 2%;
-      padding: 10px;
-      &:hover {
-        background-color: #d11a2a;
-        cursor: pointer;
-      }
-    }
-    .author {
-      margin-top: 5%;
-      p {
-        font-size: 16px;
-        a {
-          text-decoration: underline;
-        }
-      }
+    a {
+      font-size: 16px;
     }
   }
 }

@@ -9,7 +9,7 @@ export default class Registration extends React.Component {
     this.state = {
       email: '',
       password: '',
-      password_confirmation: '',
+      passwordConfirmation: '',
       errors: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +18,7 @@ export default class Registration extends React.Component {
 
   handleSubmit(e) {
     const { handleSuccessfulAuth } = this.props;
-    const { email, password, password_confirmation } = this.state;
+    const { email, password, passwordConfirmation } = this.state;
 
     e.preventDefault();
     axios
@@ -28,12 +28,12 @@ export default class Registration extends React.Component {
           user: {
             email,
             password,
-            password_confirmation,
+            passwordConfirmation,
           },
         },
-        { withCredentials: true }
+        { withCredentials: true },
       )
-      .then((response) => {
+      .then(response => {
         console.warn(response);
         if (response.data.errors) {
           console.warn(response);
@@ -45,7 +45,7 @@ export default class Registration extends React.Component {
           handleSuccessfulAuth(response.data);
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Registration error', error);
       });
   }
@@ -55,11 +55,14 @@ export default class Registration extends React.Component {
   }
 
   render() {
-    const { email, password, password_confirmation, errors } = this.state;
+    const {
+      email, password, passwordConfirmation, errors,
+    } = this.state;
     return (
       <div className="form">
         <form onSubmit={this.handleSubmit}>
-          {errors.map((error) => (
+          <h2>Create Account</h2>
+          {errors.map(error => (
             <h2 key={error} className="error">
               {error}
             </h2>
@@ -85,9 +88,9 @@ export default class Registration extends React.Component {
 
           <input
             type="password"
-            name="password_confirmation"
+            name="passwordConfirmation"
             placeholder="Password confirmation"
-            value={password_confirmation}
+            value={passwordConfirmation}
             onChange={this.handleChange}
             required
           />

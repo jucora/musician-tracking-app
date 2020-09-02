@@ -34,10 +34,8 @@ export default class Home extends React.Component {
     const { loggedInStatus, history } = this.props;
     return loggedInStatus === 'NOT_LOGGED_IN' ? (
       <div className="home">
-        <div className="forms">
-          <h2>Log In</h2>
+        <div>
           <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
-          <h2>Create Account</h2>
           <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
         </div>
       </div>

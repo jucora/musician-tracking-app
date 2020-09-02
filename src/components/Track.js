@@ -2,23 +2,24 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Skill from './Skill';
 import axios from 'axios';
+import Skill from './Skill';
 
 class Track extends React.Component {
   constructor() {
     super();
-    this.state = { total: 0, month: 'Select a month', today: 0 };
+    this.state = { total: 0 };
   }
+
   componentDidMount() {
     axios
       .get('http://localhost:3001/measures', { withCredentials: true })
-      .then((response) => {
+      .then(response => {
         this.setState({
           total: response.data.totalScore[0].total,
         });
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('error', error);
       });
   }
@@ -28,7 +29,10 @@ class Track extends React.Component {
     const { total } = this.state;
     return loggedInStatus === 'LOGGED_IN' ? (
       <div className="track">
-        <h2>Hello {user.email}</h2>
+        <h2 className="trackTitle">
+          Hello
+          {user.email}
+        </h2>
         <div className="totalScore">
           <div>
             <h2>Total Hours</h2>

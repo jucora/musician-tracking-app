@@ -4,8 +4,10 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const More = (props) => {
-  const { handleLogout, loggedInStatus, history, user } = props;
+const More = props => {
+  const {
+    handleLogout, loggedInStatus, history, user,
+  } = props;
   const handleLogoutClick = () => {
     axios
       .delete('http://localhost:3001/logout', { withCredentials: true })
@@ -13,7 +15,7 @@ const More = (props) => {
         handleLogout();
         window.location.reload();
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Logout error', error);
       });
   };
@@ -22,11 +24,24 @@ const More = (props) => {
       {loggedInStatus === 'LOGGED_IN' ? (
         <>
           <h1>Account</h1>
-          <p>User: {user.email}</p>
-          <p>Your ID: {user.id}</p>
-          <p>Registered since: {user.created_at}</p>
+          <p>
+            User:
+            {user.email}
+          </p>
+          <p>
+            Your ID:
+            {user.id}
+          </p>
+          <p>
+            Registered since:
+            {user.created_at}
+          </p>
 
-          <button type="button" onClick={() => handleLogoutClick()}>
+          <button
+            className="logoutButton"
+            type="button"
+            onClick={() => handleLogoutClick()}
+          >
             Logout
           </button>
 
@@ -34,7 +49,8 @@ const More = (props) => {
             <p>Author: Julian Belmonte</p>
             <p>
               Thank you for your support in this project. I invite you to visit
-              my{' '}
+              my
+              {' '}
               <a
                 href="https://jucora.github.io/"
                 target="_blank"
@@ -56,9 +72,10 @@ More.propTypes = {
   handleLogout: PropTypes.func.isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
   loggedInStatus: PropTypes.string.isRequired,
+  user: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.musicianReducer.user,
 });
 

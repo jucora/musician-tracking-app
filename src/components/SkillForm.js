@@ -3,6 +3,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class SkillForm extends React.Component {
   constructor(props) {
@@ -25,16 +26,16 @@ class SkillForm extends React.Component {
             name,
           },
         },
-        { withCredentials: true }
+        { withCredentials: true },
       )
-      .then((response) => {
+      .then(response => {
         if (response.data.errors) {
           this.setState({ errors: response.data.errors });
         } else {
           history.push('/track');
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('error', error);
       });
   }
@@ -46,9 +47,9 @@ class SkillForm extends React.Component {
   render() {
     const { name, errors } = this.state;
     return (
-      <div className="addSkillForm">
+      <div className="newSkillForm">
         <form onSubmit={this.handleSubmit}>
-          <h2>New Skill</h2>
+          <h1>New Skill</h1>
           <h2 className="error">{errors}</h2>
           <input
             type="text"
@@ -66,7 +67,11 @@ class SkillForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+SkillForm.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+};
+
+const mapStateToProps = state => ({
   user: state.musicianReducer.user,
 });
 
