@@ -6,17 +6,17 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import Proptypes from 'prop-types';
-import Home from './Home';
-import Track from './Track';
+import Home from '../components/Home';
+import Track from '../components/Track';
 import { changeLoggedInStatus, setCurrentUser } from '../actions/index';
-import NavBar from './NavBar';
+import NavBar from '../components/NavBar';
 import SkillForm from './SkillForm';
-import Detail from './Detail';
-import Progress from './Progress';
+import Detail from '../components/Detail';
+import Progress from '../components/Progress';
 import More from './More';
-import Login from './auth/Login';
-import Registration from './auth/Registration';
-import Header from './Header';
+import Login from '../components/auth/Login';
+import Registration from '../components/auth/Registration';
+import Header from '../components/Header';
 
 class App extends React.Component {
   constructor() {
