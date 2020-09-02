@@ -1,68 +1,66 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">Musician Tracking App</h1>
 
-## Available Scripts
+<p align="center">
+  <img src ='src/img/preview.jpg' alt='Musician Tracking App image'>
+</p>
 
-In the project directory, you can run:
+# :arrow_right: [Live Demo]()
 
-### `yarn start`
+## Author
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+:man: Julian Belmonte
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Github: [Julian Belmonte](https://github.com/jucora)
+- Twitter: [@Julian Belmonte](https://www.twitter.com/JulianBelmonte)
+- Linkedin: [Julian Belmonte](https://www.linkedin.com/in/julianbel)
 
-### `yarn test`
+## :pencil: Main Description
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This is the final project of the React module. It consists of the creation of a monitoring application on a subject of free choice. In this case, I created an application to follow the musicians' study routines.
 
-### `yarn build`
+This application is connected to an API developed in Ruby on Rails. To access the API, click here
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For more information about the project requirements, please follow the next link: [React Final Capstone Project](https://www.notion.so/Final-Capstone-Project-Tracking-App-22e454da738c46efaf17721826841772)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## How to install the App
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Please clone the repository by running the next comand in your machine:
 
-### `yarn eject`
+<pre><code>git clone https://github.com/jucora/musician-tracking-app.git</code></pre>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. Next, run the next command to install all project dependencies:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   For Yarn: <pre><code>yarn install</code></pre>
+   For npm: <pre><code>npm install</code></pre>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## How to run the app locally
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. Get into the folder of the project by running the next command:
 
-## Learn More
+<pre><code>cd musician-tracking-app</code></pre>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Start your local server by running the next command:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   For Yarn: <pre><code>yarn start</code></pre>
+   For npm: <pre><code>npm start</code></pre>
 
-### Code Splitting
+## :computer: Library, Languages and technologies
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- React
+- React-DOM
+- Redux
+- JSX
+- SCSS
+- Node.js
+- prop-types
+- npm
+- Javascript
+- Chart.js
 
-### Analyzing the Bundle Size
+## Report Issues
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Please feel free to make a contribution, report any issue, feature request or provide any feedback. Click [here](https://github.com/jucora/musician-tracking-app/issues)
 
-### Making a Progressive Web App
+## Support
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Feel free to drop a like, that would support me a lot.
