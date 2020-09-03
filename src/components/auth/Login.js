@@ -23,16 +23,16 @@ export default class Login extends React.Component {
     e.preventDefault();
     axios
       .post(
-        'http://localhost:3001/sessions',
+        'https://musician-tracking-api.herokuapp.com/sessions',
         {
           user: {
             email,
             password,
           },
         },
-        { withCredentials: true },
+        { withCredentials: true }
       )
-      .then(response => {
+      .then((response) => {
         console.warn(response);
         if (response.data.error) {
           this.setState({ error: response.data.error });
@@ -41,7 +41,7 @@ export default class Login extends React.Component {
           handleSuccessfulAuth(response.data);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Login error', error);
       });
   }

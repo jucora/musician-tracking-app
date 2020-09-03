@@ -17,12 +17,14 @@ class Progress extends React.Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:3001/skills', { withCredentials: true })
-      .then(response => {
+      .get('https://musician-tracking-api.herokuapp.com/skills', {
+        withCredentials: true,
+      })
+      .then((response) => {
         const skills = [];
         const values = [];
 
-        response.data.currentSkills.map(skill => {
+        response.data.currentSkills.map((skill) => {
           skills.push(skill.name);
           values.push(skill.sum);
           return true;
@@ -40,7 +42,7 @@ class Progress extends React.Component {
           },
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('error', error);
       });
   }
