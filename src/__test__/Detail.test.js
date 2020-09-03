@@ -9,9 +9,9 @@ it('renders', () => {
   const { asFragment } = render(
     <Detail
       location={{ state: 'value' }}
-      history={(history = {})}
+      history={{ push: () => {} }}
       loggedInStatus="LOGGED_IN"
-    />
+    />,
   );
   expect(asFragment()).toMatchSnapshot();
 });

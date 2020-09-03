@@ -36,7 +36,7 @@ class App extends React.Component {
       .get('https://musician-tracking-api.herokuapp.com/logged_in', {
         withCredentials: true,
       })
-      .then((response) => {
+      .then(response => {
         if (response.data.logged_in && loggedInStatus === 'NOT_LOGGED_IN') {
           changeLoggedInStatus('LOGGED_IN');
           setCurrentUser(response.data.current_user);
@@ -46,7 +46,7 @@ class App extends React.Component {
         }
         this.setState({ contentLoaded: true });
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('check login error', error);
       });
   }
@@ -76,7 +76,7 @@ class App extends React.Component {
             <Route
               exact
               path="/"
-              render={(props) => (
+              render={props => (
                 <Home
                   {...props}
                   handleLogin={this.handleLogin}
@@ -88,31 +88,31 @@ class App extends React.Component {
             <Route
               exact
               path="/skillForm"
-              render={(props) => <SkillForm {...props} />}
+              render={props => <SkillForm {...props} />}
             />
             <Route
               exact
               path="/track"
-              render={(props) => (
+              render={props => (
                 <Track user={user} {...props} loggedInStatus={loggedInStatus} />
               )}
             />
 
             <Route
               path="/detail/:id"
-              render={(props) => (
+              render={props => (
                 <Detail {...props} loggedInStatus={loggedInStatus} />
               )}
             />
             <Route
               path="/progress"
-              render={(props) => (
+              render={props => (
                 <Progress {...props} loggedInStatus={loggedInStatus} />
               )}
             />
             <Route
               path="/more"
-              render={(props) => (
+              render={props => (
                 <More
                   {...props}
                   handleLogin={this.handleLogin}
@@ -136,16 +136,16 @@ App.propTypes = {
   user: Proptypes.objectOf(Proptypes.any).isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   loggedInStatus: state.musicianReducer.loggedInStatus,
   user: state.musicianReducer.user,
 });
 
-const matchDispatchToProps = (dispatch) => ({
-  changeLoggedInStatus: (newStatus) => {
+const matchDispatchToProps = dispatch => ({
+  changeLoggedInStatus: newStatus => {
     dispatch(changeLoggedInStatus(newStatus));
   },
-  setCurrentUser: (user) => {
+  setCurrentUser: user => {
     dispatch(setCurrentUser(user));
   },
 });

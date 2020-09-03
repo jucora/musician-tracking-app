@@ -16,12 +16,12 @@ class Track extends React.Component {
       .get('https://musician-tracking-api.herokuapp.com/measures', {
         withCredentials: true,
       })
-      .then((response) => {
+      .then(response => {
         this.setState({
           total: response.data.totalScore[0].total,
         });
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('error', error);
       });
   }

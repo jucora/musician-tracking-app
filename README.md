@@ -4,7 +4,7 @@
   <img src ='src/img/preview.jpg' alt='Musician Tracking App image'>
 </p>
 
-# :arrow_right: [Live Demo]()
+# :arrow_right: [Live Demo](https://musician-tracking-app.web.app/)
 
 ## Author
 

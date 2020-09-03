@@ -7,7 +7,7 @@ afterEach(cleanup);
 
 it('renders', () => {
   const { asFragment } = render(
-    <Track user={{}} loggedInStatus="LOGGED_IN" history={{ push: () => {} }} />
+    <Track user={{}} loggedInStatus="LOGGED_IN" history={{ push: () => {} }} />,
   );
   expect(asFragment()).toMatchSnapshot();
 });

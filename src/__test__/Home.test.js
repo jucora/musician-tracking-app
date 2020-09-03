@@ -12,7 +12,7 @@ it('renders', () => {
       handleLogout={() => ''}
       loggedInStatus="LOGGED_IN"
       history={{ push: () => {} }}
-    />
+    />,
   );
   expect(asFragment()).toMatchSnapshot();
 });

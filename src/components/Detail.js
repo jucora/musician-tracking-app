@@ -19,15 +19,15 @@ class Detail extends React.Component {
         `https://musician-tracking-api.herokuapp.com/skills/destroy/${skillId}`,
         {
           withCredentials: true,
-        }
+        },
       )
-      .then((response) => {
+      .then(response => {
         if (response) {
           const { history } = this.props;
           history.push('/track');
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('error', error);
       });
   }
@@ -48,9 +48,9 @@ class Detail extends React.Component {
             newScore: score,
           },
         },
-        { withCredentials: true }
+        { withCredentials: true },
       )
-      .then((response) => {
+      .then(response => {
         console.warn(response);
         if (response.data.errors) {
           this.setState({ errors: response.data.errors });
@@ -59,7 +59,7 @@ class Detail extends React.Component {
           history.push('/progress');
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('error', error);
       });
   }
@@ -80,7 +80,7 @@ class Detail extends React.Component {
             Your Skill:
             {skillName}
           </h1>
-          {errors.map((error) => (
+          {errors.map(error => (
             <h2 key={error} className="error">
               {error}
             </h2>

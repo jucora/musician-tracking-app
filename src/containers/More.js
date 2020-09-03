@@ -4,8 +4,10 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const More = (props) => {
-  const { handleLogout, loggedInStatus, history, user } = props;
+const More = props => {
+  const {
+    handleLogout, loggedInStatus, history, user,
+  } = props;
   const handleLogoutClick = () => {
     axios
       .delete('https://musician-tracking-api.herokuapp.com/logout', {
@@ -15,7 +17,7 @@ const More = (props) => {
         handleLogout();
         window.location.reload();
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Logout error', error);
       });
   };
@@ -49,7 +51,8 @@ const More = (props) => {
             <p>Author: Julian Belmonte</p>
             <p>
               Thank you for your support in this project. I invite you to visit
-              my{' '}
+              my
+              {' '}
               <a
                 href="https://jucora.github.io/"
                 target="_blank"
@@ -74,7 +77,7 @@ More.propTypes = {
   user: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.musicianReducer.user,
 });
 

@@ -7,7 +7,7 @@ afterEach(cleanup);
 
 it('renders', () => {
   const { asFragment } = render(
-    <Registration handleSuccessfulAuth={() => ''} />
+    <Registration handleSuccessfulAuth={() => ''} />,
   );
   expect(asFragment()).toMatchSnapshot();
 });

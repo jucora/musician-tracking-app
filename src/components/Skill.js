@@ -22,10 +22,10 @@ class Skill extends React.Component {
       .get('https://musician-tracking-api.herokuapp.com/skills', {
         withCredentials: true,
       })
-      .then((response) => {
+      .then(response => {
         this.setState({ skills: response.data.currentSkills });
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('error', error);
       });
   }

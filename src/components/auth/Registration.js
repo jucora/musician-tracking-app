@@ -31,9 +31,9 @@ export default class Registration extends React.Component {
             passwordConfirmation,
           },
         },
-        { withCredentials: true }
+        { withCredentials: true },
       )
-      .then((response) => {
+      .then(response => {
         console.warn(response);
         if (response.data.errors) {
           console.warn(response);
@@ -45,7 +45,7 @@ export default class Registration extends React.Component {
           handleSuccessfulAuth(response.data);
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Registration error', error);
       });
   }
@@ -55,12 +55,14 @@ export default class Registration extends React.Component {
   }
 
   render() {
-    const { email, password, passwordConfirmation, errors } = this.state;
+    const {
+      email, password, passwordConfirmation, errors,
+    } = this.state;
     return (
       <div className="form">
         <form onSubmit={this.handleSubmit}>
           <h2>Create Account</h2>
-          {errors.map((error) => (
+          {errors.map(error => (
             <h2 key={error} className="error">
               {error}
             </h2>

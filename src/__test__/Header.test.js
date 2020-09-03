@@ -17,16 +17,16 @@ it('should have a title', () => {
 
 it('should have a subtitle', () => {
   const { getByTestId } = render(
-    <Header text="Keep track of your musical skills!" />
+    <Header text="Keep track of your musical skills!" />,
   );
   expect(getByTestId('title-subtitle')).toHaveTextContent(
-    'Keep track of your musical skills!'
+    'Keep track of your musical skills!',
   );
 });
 
 test('header div child should have a class title-subtitle', () => {
   const { getByText } = render(<Header />);
   expect(getByText('Keep track of your musical skills!')).toHaveClass(
-    'title-subtitle'
+    'title-subtitle',
   );
 });
