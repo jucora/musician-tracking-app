@@ -19,14 +19,14 @@ class SkillForm extends React.Component {
     e.preventDefault();
 
     Api.addSkill(name)
-      .then((response) => {
+      .then(response => {
         if (response.data.errors) {
           this.setState({ errors: response.data.errors });
         } else {
           history.push('/track');
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('error', error);
       });
   }
@@ -66,7 +66,7 @@ SkillForm.propTypes = {
   loggedInStatus: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.musicianReducer.user,
 });
 
