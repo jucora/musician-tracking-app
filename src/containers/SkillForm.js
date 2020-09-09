@@ -1,9 +1,9 @@
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Api from '../utils/api';
 
 class SkillForm extends React.Component {
   constructor(props) {
@@ -18,21 +18,15 @@ class SkillForm extends React.Component {
     const { history } = this.props;
     e.preventDefault();
 
-    axios
-      .post('http://localhost:3001/skills', {
-        newSkill: {
-          name,
-          token: JSON.parse(localStorage.getItem('token')),
-        },
-      })
-      .then(response => {
+    Api.addSkill(name)
+      .then((response) => {
         if (response.data.errors) {
           this.setState({ errors: response.data.errors });
         } else {
           history.push('/track');
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('error', error);
       });
   }
@@ -72,7 +66,7 @@ SkillForm.propTypes = {
   loggedInStatus: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   user: state.musicianReducer.user,
 });
 
