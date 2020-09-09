@@ -15,10 +15,10 @@ class Skill extends React.Component {
 
   componentDidMount() {
     Api.getSkills()
-      .then((response) => {
+      .then(response => {
         this.setState({ skills: response.data.currentSkills });
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('error', error);
       });
   }

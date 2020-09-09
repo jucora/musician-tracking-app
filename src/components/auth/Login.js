@@ -22,7 +22,7 @@ export default class Login extends React.Component {
 
     e.preventDefault();
     Api.newSession(email, password)
-      .then((response) => {
+      .then(response => {
         if (response.data.error) {
           this.setState({ error: response.data.error });
         }
@@ -31,7 +31,7 @@ export default class Login extends React.Component {
           handleSuccessfulAuth(response.data);
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Login error', error);
       });
   }

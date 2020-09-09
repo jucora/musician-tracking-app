@@ -15,12 +15,12 @@ class Track extends React.Component {
     const { loggedInStatus } = this.props;
     if (loggedInStatus === 'LOGGED_IN') {
       Api.getMeasures()
-        .then((response) => {
+        .then(response => {
           this.setState({
             total: response.data.totalScore[0].total,
           });
         })
-        .catch((error) => {
+        .catch(error => {
           console.error('error', error);
         });
     }
@@ -31,7 +31,10 @@ class Track extends React.Component {
     const { total } = this.state;
     return loggedInStatus === 'LOGGED_IN' ? (
       <div className="track">
-        <h2 className="trackTitle">Hello {user.email}</h2>
+        <h2 className="trackTitle">
+          Hello
+          {user.email}
+        </h2>
         <div className="totalScore">
           <div>
             <h2>Total Hours</h2>

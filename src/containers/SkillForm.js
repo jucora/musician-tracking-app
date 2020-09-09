@@ -25,14 +25,14 @@ class SkillForm extends React.Component {
           token: JSON.parse(localStorage.getItem('token')),
         },
       })
-      .then((response) => {
+      .then(response => {
         if (response.data.errors) {
           this.setState({ errors: response.data.errors });
         } else {
           history.push('/track');
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('error', error);
       });
   }
@@ -69,9 +69,10 @@ class SkillForm extends React.Component {
 
 SkillForm.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
+  loggedInStatus: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.musicianReducer.user,
 });
 
