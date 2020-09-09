@@ -22,30 +22,23 @@ export default class Registration extends React.Component {
 
     e.preventDefault();
     axios
-      .post(
-        'https://musician-tracking-api.herokuapp.com/registrations',
-        {
-          user: {
-            email,
-            password,
-            passwordConfirmation,
-          },
+      .post('http://localhost:3001/registrations', {
+        user: {
+          email,
+          password,
+          password_confirmation: passwordConfirmation,
         },
-        { withCredentials: true },
-      )
-      .then(response => {
-        console.warn(response);
+      })
+      .then((response) => {
         if (response.data.errors) {
-          console.warn(response);
-
           this.setState({ errors: response.data.errors });
         }
         if (response.data.user) {
-          console.warn(response);
+          localStorage.setItem('token', JSON.stringify(response.data.jwt));
           handleSuccessfulAuth(response.data);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Registration error', error);
       });
   }
@@ -55,14 +48,12 @@ export default class Registration extends React.Component {
   }
 
   render() {
-    const {
-      email, password, passwordConfirmation, errors,
-    } = this.state;
+    const { email, password, passwordConfirmation, errors } = this.state;
     return (
       <div className="form">
         <form onSubmit={this.handleSubmit}>
           <h2>Create Account</h2>
-          {errors.map(error => (
+          {errors.map((error) => (
             <h2 key={error} className="error">
               {error}
             </h2>

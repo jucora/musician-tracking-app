@@ -19,13 +19,15 @@ class Skill extends React.Component {
 
   getCurrentSkills() {
     axios
-      .get('https://musician-tracking-api.herokuapp.com/skills', {
-        withCredentials: true,
+      .get('http://localhost:3001/skills', {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem('token')),
+        },
       })
-      .then(response => {
+      .then((response) => {
         this.setState({ skills: response.data.currentSkills });
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('error', error);
       });
   }

@@ -13,15 +13,17 @@ class Track extends React.Component {
 
   componentDidMount() {
     axios
-      .get('https://musician-tracking-api.herokuapp.com/measures', {
-        withCredentials: true,
+      .get('http://localhost:3001/measures', {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem('token')),
+        },
       })
-      .then(response => {
+      .then((response) => {
         this.setState({
           total: response.data.totalScore[0].total,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('error', error);
       });
   }

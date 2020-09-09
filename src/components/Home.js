@@ -21,13 +21,13 @@ export default class Home extends React.Component {
   handleLogoutClick() {
     const { handleLogout } = this.props;
     axios
-      .delete('https://musician-tracking-api.herokuapp.com/logout', {
+      .delete('http://localhost:3001/logout', {
         withCredentials: true,
       })
       .then(() => {
         handleLogout();
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Logout error', error);
       });
   }

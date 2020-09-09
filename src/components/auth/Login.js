@@ -22,26 +22,22 @@ export default class Login extends React.Component {
 
     e.preventDefault();
     axios
-      .post(
-        'https://musician-tracking-api.herokuapp.com/sessions',
-        {
-          user: {
-            email,
-            password,
-          },
+      .post('http://localhost:3001/sessions', {
+        user: {
+          email,
+          password,
         },
-        { withCredentials: true },
-      )
-      .then(response => {
-        console.warn(response);
+      })
+      .then((response) => {
         if (response.data.error) {
           this.setState({ error: response.data.error });
         }
         if (response.data.logged_in) {
+          localStorage.setItem('token', JSON.stringify(response.data.jwt));
           handleSuccessfulAuth(response.data);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Login error', error);
       });
   }

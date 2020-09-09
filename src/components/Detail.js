@@ -15,19 +15,16 @@ class Detail extends React.Component {
 
   handleClick(skillId) {
     axios
-      .delete(
-        `https://musician-tracking-api.herokuapp.com/skills/destroy/${skillId}`,
-        {
-          withCredentials: true,
-        },
-      )
-      .then(response => {
+      .delete(`http://localhost:3001/skills/destroy/${skillId}`, {
+        withCredentials: true,
+      })
+      .then((response) => {
         if (response) {
           const { history } = this.props;
           history.push('/track');
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('error', error);
       });
   }
@@ -40,18 +37,13 @@ class Detail extends React.Component {
 
     e.preventDefault();
     axios
-      .post(
-        'https://musician-tracking-api.herokuapp.com/measures',
-        {
-          skill: {
-            id: skill.skill_id,
-            newScore: score,
-          },
+      .post('http://localhost:3001/measures', {
+        measure: {
+          id: skill.skill_id,
+          newScore: score,
         },
-        { withCredentials: true },
-      )
-      .then(response => {
-        console.warn(response);
+      })
+      .then((response) => {
         if (response.data.errors) {
           this.setState({ errors: response.data.errors });
         }
@@ -59,7 +51,7 @@ class Detail extends React.Component {
           history.push('/progress');
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('error', error);
       });
   }
@@ -80,7 +72,7 @@ class Detail extends React.Component {
             Your Skill:
             {skillName}
           </h1>
-          {errors.map(error => (
+          {errors.map((error) => (
             <h2 key={error} className="error">
               {error}
             </h2>

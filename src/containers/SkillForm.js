@@ -20,22 +20,23 @@ class SkillForm extends React.Component {
 
     axios
       .post(
-        'https://musician-tracking-api.herokuapp.com/skills',
+        'http://localhost:3001/skills',
         {
           newSkill: {
             name,
+            token: JSON.parse(localStorage.getItem('token')),
           },
         },
-        { withCredentials: true },
+        { withCredentials: true }
       )
-      .then(response => {
+      .then((response) => {
         if (response.data.errors) {
           this.setState({ errors: response.data.errors });
         } else {
           history.push('/track');
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('error', error);
       });
   }
@@ -71,7 +72,7 @@ SkillForm.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   user: state.musicianReducer.user,
 });
 
