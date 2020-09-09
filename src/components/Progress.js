@@ -1,8 +1,8 @@
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import axios from 'axios';
 import PropTypes from 'prop-types';
+import Api from '../utils/api';
 
 class Progress extends React.Component {
   constructor(props) {
@@ -16,37 +16,35 @@ class Progress extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get('http://localhost:3001/skills', {
-        headers: {
-          Authorization: JSON.parse(localStorage.getItem('token')),
-        },
-      })
-      .then((response) => {
-        const skills = [];
-        const values = [];
+    const { loggedInStatus } = this.props;
+    if (loggedInStatus === 'LOGGED_IN') {
+      Api.getSkills()
+        .then((response) => {
+          const skills = [];
+          const values = [];
 
-        response.data.currentSkills.map((skill) => {
-          skills.push(skill.name);
-          values.push(skill.sum);
-          return true;
+          response.data.currentSkills.map((skill) => {
+            skills.push(skill.name);
+            values.push(skill.sum);
+            return true;
+          });
+          this.setState({
+            data: {
+              labels: skills,
+              datasets: [
+                {
+                  label: 'Your Progress',
+                  data: values,
+                  backgroundColor: '#ADDC91',
+                },
+              ],
+            },
+          });
+        })
+        .catch((error) => {
+          console.error('error', error);
         });
-        this.setState({
-          data: {
-            labels: skills,
-            datasets: [
-              {
-                label: 'Your Progress',
-                data: values,
-                backgroundColor: '#ADDC91',
-              },
-            ],
-          },
-        });
-      })
-      .catch((error) => {
-        console.error('error', error);
-      });
+    }
   }
 
   render() {

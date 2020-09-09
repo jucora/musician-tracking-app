@@ -1,7 +1,7 @@
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 import React from 'react';
-import axios from 'axios';
 import PropType from 'prop-types';
+import Api from '../../utils/api';
 
 export default class Registration extends React.Component {
   constructor(props) {
@@ -21,14 +21,7 @@ export default class Registration extends React.Component {
     const { email, password, passwordConfirmation } = this.state;
 
     e.preventDefault();
-    axios
-      .post('http://localhost:3001/registrations', {
-        user: {
-          email,
-          password,
-          password_confirmation: passwordConfirmation,
-        },
-      })
+    Api.registration(email, password, passwordConfirmation)
       .then((response) => {
         if (response.data.errors) {
           this.setState({ errors: response.data.errors });

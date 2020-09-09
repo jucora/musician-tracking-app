@@ -1,8 +1,8 @@
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
 import React from 'react';
-import axios from 'axios';
 import PropType from 'prop-types';
+import Api from '../../utils/api';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -21,13 +21,7 @@ export default class Login extends React.Component {
     const { email, password } = this.state;
 
     e.preventDefault();
-    axios
-      .post('http://localhost:3001/sessions', {
-        user: {
-          email,
-          password,
-        },
-      })
+    Api.newSession(email, password)
       .then((response) => {
         if (response.data.error) {
           this.setState({ error: response.data.error });

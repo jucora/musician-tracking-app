@@ -19,16 +19,12 @@ class SkillForm extends React.Component {
     e.preventDefault();
 
     axios
-      .post(
-        'http://localhost:3001/skills',
-        {
-          newSkill: {
-            name,
-            token: JSON.parse(localStorage.getItem('token')),
-          },
+      .post('http://localhost:3001/skills', {
+        newSkill: {
+          name,
+          token: JSON.parse(localStorage.getItem('token')),
         },
-        { withCredentials: true }
-      )
+      })
       .then((response) => {
         if (response.data.errors) {
           this.setState({ errors: response.data.errors });
@@ -47,7 +43,8 @@ class SkillForm extends React.Component {
 
   render() {
     const { name, errors } = this.state;
-    return (
+    const { loggedInStatus, history } = this.props;
+    return loggedInStatus === 'LOGGED_IN' ? (
       <div className="newSkillForm">
         <form onSubmit={this.handleSubmit}>
           <h1>New Skill</h1>
@@ -64,6 +61,8 @@ class SkillForm extends React.Component {
           <button type="submit">Add New Skill</button>
         </form>
       </div>
+    ) : (
+      (history.push('/'), true)
     );
   }
 }

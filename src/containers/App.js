@@ -3,7 +3,6 @@
 
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import Proptypes from 'prop-types';
 import Home from '../components/Home';
@@ -21,6 +20,7 @@ import More from './More';
 import Login from '../components/auth/Login';
 import Registration from '../components/auth/Registration';
 import Header from '../components/Header';
+import Api from '../utils/api';
 
 class App extends React.Component {
   constructor() {
@@ -31,18 +31,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.checkLoginStatus();
-  }
-
-  checkLoginStatus() {
     const { changeLoggedInStatus, setCurrentUser, loggedInStatus } = this.props;
-
-    axios
-      .get('http://localhost:3001/logged_in', {
-        headers: {
-          Authorization: JSON.parse(localStorage.getItem('token')),
-        },
-      })
+    Api.loggedIn()
       .then((response) => {
         if (response.data.logged_in && loggedInStatus === 'NOT_LOGGED_IN') {
           changeLoggedInStatus('LOGGED_IN');
@@ -96,7 +86,9 @@ class App extends React.Component {
             <Route
               exact
               path="/skillForm"
-              render={(props) => <SkillForm {...props} />}
+              render={(props) => (
+                <SkillForm {...props} loggedInStatus={loggedInStatus} />
+              )}
             />
             <Route
               exact
