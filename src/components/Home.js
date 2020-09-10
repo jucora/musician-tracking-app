@@ -1,7 +1,6 @@
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
 import React from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import Login from './auth/Login';
 import Registration from './auth/Registration';
@@ -20,16 +19,7 @@ export default class Home extends React.Component {
 
   handleLogoutClick() {
     const { handleLogout } = this.props;
-    axios
-      .delete('https://musician-tracking-api.herokuapp.com/logout', {
-        withCredentials: true,
-      })
-      .then(() => {
-        handleLogout();
-      })
-      .catch(error => {
-        console.error('Logout error', error);
-      });
+    handleLogout();
   }
 
   render() {

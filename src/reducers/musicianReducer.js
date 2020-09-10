@@ -3,6 +3,7 @@ import { SET_CURRENT_USER, CHANGE_LOGGED_IN_STATUS } from '../actions/index';
 const initialState = {
   loggedInStatus: 'NOT_LOGGED_IN',
   user: {},
+  token: null,
 };
 
 const musicianReducer = (state = initialState, action) => {

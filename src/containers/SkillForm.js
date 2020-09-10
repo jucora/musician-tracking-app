@@ -1,9 +1,9 @@
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Api from '../utils/api';
 
 class SkillForm extends React.Component {
   constructor(props) {
@@ -18,16 +18,7 @@ class SkillForm extends React.Component {
     const { history } = this.props;
     e.preventDefault();
 
-    axios
-      .post(
-        'https://musician-tracking-api.herokuapp.com/skills',
-        {
-          newSkill: {
-            name,
-          },
-        },
-        { withCredentials: true },
-      )
+    Api.addSkill(name)
       .then(response => {
         if (response.data.errors) {
           this.setState({ errors: response.data.errors });
@@ -46,7 +37,8 @@ class SkillForm extends React.Component {
 
   render() {
     const { name, errors } = this.state;
-    return (
+    const { loggedInStatus, history } = this.props;
+    return loggedInStatus === 'LOGGED_IN' ? (
       <div className="newSkillForm">
         <form onSubmit={this.handleSubmit}>
           <h1>New Skill</h1>
@@ -63,12 +55,15 @@ class SkillForm extends React.Component {
           <button type="submit">Add New Skill</button>
         </form>
       </div>
+    ) : (
+      (history.push('/'), true)
     );
   }
 }
 
 SkillForm.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
+  loggedInStatus: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({

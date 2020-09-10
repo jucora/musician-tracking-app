@@ -3,7 +3,6 @@
 
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import Proptypes from 'prop-types';
 import Home from '../components/Home';
@@ -17,6 +16,7 @@ import More from './More';
 import Login from '../components/auth/Login';
 import Registration from '../components/auth/Registration';
 import Header from '../components/Header';
+import Api from '../utils/api';
 
 class App extends React.Component {
   constructor() {
@@ -27,15 +27,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.checkLoginStatus();
-  }
-
-  checkLoginStatus() {
     const { changeLoggedInStatus, setCurrentUser, loggedInStatus } = this.props;
-    axios
-      .get('https://musician-tracking-api.herokuapp.com/logged_in', {
-        withCredentials: true,
-      })
+    Api.loggedIn()
       .then(response => {
         if (response.data.logged_in && loggedInStatus === 'NOT_LOGGED_IN') {
           changeLoggedInStatus('LOGGED_IN');
@@ -58,6 +51,7 @@ class App extends React.Component {
   }
 
   handleLogout() {
+    localStorage.removeItem('token');
     const { changeLoggedInStatus, setCurrentUser } = this.props;
     changeLoggedInStatus('NOT_LOGGED_IN');
     setCurrentUser({});
@@ -88,7 +82,9 @@ class App extends React.Component {
             <Route
               exact
               path="/skillForm"
-              render={props => <SkillForm {...props} />}
+              render={props => (
+                <SkillForm {...props} loggedInStatus={loggedInStatus} />
+              )}
             />
             <Route
               exact
@@ -139,6 +135,7 @@ App.propTypes = {
 const mapStateToProps = state => ({
   loggedInStatus: state.musicianReducer.loggedInStatus,
   user: state.musicianReducer.user,
+  token: state.musicianReducer.token,
 });
 
 const matchDispatchToProps = dispatch => ({

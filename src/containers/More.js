@@ -1,6 +1,5 @@
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 import React from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -9,17 +8,7 @@ const More = props => {
     handleLogout, loggedInStatus, history, user,
   } = props;
   const handleLogoutClick = () => {
-    axios
-      .delete('https://musician-tracking-api.herokuapp.com/logout', {
-        withCredentials: true,
-      })
-      .then(() => {
-        handleLogout();
-        window.location.reload();
-      })
-      .catch(error => {
-        console.error('Logout error', error);
-      });
+    handleLogout();
   };
   return (
     <div className="moreBox">
