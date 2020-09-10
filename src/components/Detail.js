@@ -1,8 +1,8 @@
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
 import React from 'react';
-import axios from 'axios';
 import PropTypes, { string } from 'prop-types';
+import Api from '../utils/api';
 
 class Detail extends React.Component {
   constructor() {
@@ -14,13 +14,7 @@ class Detail extends React.Component {
   }
 
   handleClick(skillId) {
-    axios
-      .delete(
-        `https://musician-tracking-api.herokuapp.com/skills/destroy/${skillId}`,
-        {
-          withCredentials: true,
-        },
-      )
+    Api.destroySkill(skillId)
       .then(response => {
         if (response) {
           const { history } = this.props;
@@ -33,25 +27,13 @@ class Detail extends React.Component {
   }
 
   handleSubmit(e) {
-    const { location } = this.props;
+    const { location, history } = this.props;
     const { skill } = location.state;
     const { score } = this.state;
-    const { history } = this.props;
 
     e.preventDefault();
-    axios
-      .post(
-        'https://musician-tracking-api.herokuapp.com/measures',
-        {
-          skill: {
-            id: skill.skill_id,
-            newScore: score,
-          },
-        },
-        { withCredentials: true },
-      )
+    Api.addMeasure(skill, score)
       .then(response => {
-        console.warn(response);
         if (response.data.errors) {
           this.setState({ errors: response.data.errors });
         }
@@ -70,15 +52,14 @@ class Detail extends React.Component {
 
   render() {
     const { location, loggedInStatus, history } = this.props;
-
-    const { skillName, skill } = location.state;
+    /* const { skillName, skill } = location.state; */
     const { score, errors } = this.state;
     return loggedInStatus === 'LOGGED_IN' ? (
       <div className="newScoreForm">
         <form onSubmit={this.handleSubmit}>
           <h1>
             Your Skill:
-            {skillName}
+            {location.state.skillName}
           </h1>
           {errors.map(error => (
             <h2 key={error} className="error">
@@ -100,7 +81,7 @@ class Detail extends React.Component {
           <h2>Delete Skill</h2>
           <button
             type="button"
-            onClick={() => this.handleClick(skill.skill_id)}
+            onClick={() => this.handleClick(location.state.skill.skill_id)}
             className="deleteSkill"
           >
             Remove

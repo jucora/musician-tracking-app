@@ -1,7 +1,7 @@
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 import React from 'react';
-import axios from 'axios';
 import PropType from 'prop-types';
+import Api from '../../utils/api';
 
 export default class Registration extends React.Component {
   constructor(props) {
@@ -21,27 +21,13 @@ export default class Registration extends React.Component {
     const { email, password, passwordConfirmation } = this.state;
 
     e.preventDefault();
-    axios
-      .post(
-        'https://musician-tracking-api.herokuapp.com/registrations',
-        {
-          user: {
-            email,
-            password,
-            passwordConfirmation,
-          },
-        },
-        { withCredentials: true },
-      )
+    Api.registration(email, password, passwordConfirmation)
       .then(response => {
-        console.warn(response);
         if (response.data.errors) {
-          console.warn(response);
-
           this.setState({ errors: response.data.errors });
         }
         if (response.data.user) {
-          console.warn(response);
+          localStorage.setItem('token', JSON.stringify(response.data.jwt));
           handleSuccessfulAuth(response.data);
         }
       })

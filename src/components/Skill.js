@@ -1,7 +1,7 @@
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 import React from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Api from '../utils/api';
 
 const skillImage = require('../img/skill.svg');
 
@@ -14,14 +14,7 @@ class Skill extends React.Component {
   }
 
   componentDidMount() {
-    this.getCurrentSkills();
-  }
-
-  getCurrentSkills() {
-    axios
-      .get('https://musician-tracking-api.herokuapp.com/skills', {
-        withCredentials: true,
-      })
+    Api.getSkills()
       .then(response => {
         this.setState({ skills: response.data.currentSkills });
       })
